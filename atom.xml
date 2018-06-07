@@ -6,7 +6,7 @@
   <link href="/MyBlog/atom.xml" rel="self"/>
   
   <link href="https://qiuyuxiu.github.io/MyBlog/"/>
-  <updated>2018-06-07T10:04:05.061Z</updated>
+  <updated>2018-06-07T10:12:51.880Z</updated>
   <id>https://qiuyuxiu.github.io/MyBlog/</id>
   
   <author>
@@ -15,6 +15,58 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>优化策略</title>
+    <link href="https://qiuyuxiu.github.io/MyBlog/2018/06/07/%E4%BC%98%E5%8C%96%E7%AD%96%E7%95%A5/"/>
+    <id>https://qiuyuxiu.github.io/MyBlog/2018/06/07/优化策略/</id>
+    <published>2018-06-07T10:08:06.000Z</published>
+    <updated>2018-06-07T10:12:51.880Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="渲染优化"><a href="#渲染优化" class="headerlink" title="渲染优化"></a>渲染优化</h2><p>最佳优化渲染路径：最小化关键资源的数量，字节数，长度</p><ol><li>js的异步加载：<br><code>&lt;script async src=&quot;example.js&quot;&gt;&lt;/script&gt;</code></li><li>使用预处理器less，scss，sass等等。</li><li>Jquery的使用：id选择获取最快；使用for不适用each，能不用jq获取属性的时候可以不用，例如 this.id 获取id就不用 $(this).attr(“id”);</li></ol><h2 id="图片优化方案"><a href="#图片优化方案" class="headerlink" title="图片优化方案"></a>图片优化方案</h2><ol><li>使用base4 编码代替图片</li><li>合并图片雪碧图</li><li>使用css，svg，canvas或iconfont（font-awesome/阿里的iconfont）代替图片</li><li>css中使用after，before实现一些图形</li><li>压缩合并，CDN.缓存，延时加载，独立域名</li><li>tinypng：压缩图片网站，减少颜色数量，24png-&gt;8png</li></ol><h2 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h2><ol><li><p>使用DocumentFragments或innerHTML取代复杂的元素注入。对于追加多条列表标签，最好采用先将这些标签追加到一个变量中，再使用innerHTML进行赋值。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var htmlStr = &apos;&apos;;</span><br><span class="line">ajaxResult.items.forEach(function(item) &#123;</span><br><span class="line">// 构建包含HTML页面内容的字符串</span><br><span class="line">htmlStr += &apos;&lt;li&gt;&apos; + item.text + &apos;&lt;/li&gt;&apos;; &#125;);</span><br><span class="line">// 通过innerHTML设定ul内容</span><br><span class="line">document.querySelector(&apos;ul&apos;).innerHTML = htmlStr;</span><br></pre></td></tr></table></figure></li><li><p>高频执行事件/方法的防抖<br>对于滚动条或者一些滚动监听事件，如果触发过快就会影响性能，故需要做一些防抖动的操作。通常，开发人员会在有用户交互参与的地方添加事件，而往往这种事件会被频繁触发。想象一下窗口的resize事件或者是一个元素的onmouseover事件 - 他们触发时，执行的非常迅速，并且触发很多次。如果你的回调过重，你可能使浏览器死掉。<br>而防抖可以限制一个方法在一定时间内执行的次数。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">// 取自 UnderscoreJS 实用框架</span><br><span class="line">function debounce(func, wait, immediate) &#123;</span><br><span class="line">var timeout;</span><br><span class="line">return function() &#123;</span><br><span class="line">  var context = this, args = arguments;</span><br><span class="line">  var later = function() &#123;</span><br><span class="line">  timeout = null;</span><br><span class="line">  if (!immediate)</span><br><span class="line">    func.apply(context, args);</span><br><span class="line">  &#125;;</span><br><span class="line">  var callNow = immediate &amp;&amp; !timeout;</span><br><span class="line">  clearTimeout(timeout);</span><br><span class="line">  timeout = setTimeout(later, wait);</span><br><span class="line">  if (callNow)</span><br><span class="line">    func.apply(context, args);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line">// 添加resize的回调函数，但是只允许它每300毫秒执行一次</span><br><span class="line">window.addEventListener(&apos;resize&apos;, debounce(function(event) &#123;</span><br><span class="line">// 这里写resize过程</span><br><span class="line">&#125;, 300));</span><br></pre></td></tr></table></figure></li></ol><p>debounce方法返回一个方法，用来包住你的回调函数，限制他的执行频率。使用这个防抖方法，就可以让你写的频繁回调的方法不会妨碍用户的浏览器！</p><p>参考<a href="http://www.imooc.com/article/1647" target="_blank" rel="noopener">http://www.imooc.com/article/1647</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;渲染优化&quot;&gt;&lt;a href=&quot;#渲染优化&quot; class=&quot;headerlink&quot; title=&quot;渲染优化&quot;&gt;&lt;/a&gt;渲染优化&lt;/h2&gt;&lt;p&gt;最佳优化渲染路径：最小化关键资源的数量，字节数，长度&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;js的异步加载：&lt;br&gt;&lt;code&gt;&amp;lt;
+      
+    
+    </summary>
+    
+      <category term="优化" scheme="https://qiuyuxiu.github.io/MyBlog/categories/%E4%BC%98%E5%8C%96/"/>
+    
+    
+      <category term="优化" scheme="https://qiuyuxiu.github.io/MyBlog/tags/%E4%BC%98%E5%8C%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>浏览器缓存机制</title>
+    <link href="https://qiuyuxiu.github.io/MyBlog/2017/06/12/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6/"/>
+    <id>https://qiuyuxiu.github.io/MyBlog/2017/06/12/浏览器缓存机制/</id>
+    <published>2017-06-12T10:13:26.000Z</published>
+    <updated>2018-06-07T10:47:58.256Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="HTTP缓存机制"><a href="#HTTP缓存机制" class="headerlink" title="HTTP缓存机制"></a>HTTP缓存机制</h2><p>缓存行为主要由缓存策略决定，而缓存策略由内容拥有者设置。这些策略主要通过特定的HTTP头部来清晰地表达。<br>当一个用户发起一个静态资源请求的时候，浏览器会通过以下几步来获取资源：</p><ol><li>本地缓存阶段：先在本地查找该资源，如果有发现该资源，而且该资源还没有过期，就使用这一个资源，完全不会发送http请求到服务器；</li><li>协商缓存阶段：如果在本地缓存找到对应的资源，但是如果该资源已经过期，则发一个http请求到服务器,然后服务器判断这个请求，如果请求的资源在服务器上没有改动过，则返回304，让浏览器使用本地找到的那个资源；</li><li>缓存失败阶段：当服务器发现请求的资源已经修改过，或者这是一个新的请求(在本来没有找到资源)，服务器则返回该资源的数据，并且返回200， 当然这个是指找到资源的情况下，如果服务器上没有这个资源，则返回404。</li></ol><h2 id="用户操作行为与缓存"><a href="#用户操作行为与缓存" class="headerlink" title="用户操作行为与缓存"></a>用户操作行为与缓存</h2><p><img src="../../images/pic5.png" alt="用户操作行为与缓存图"></p><h2 id="本地缓存"><a href="#本地缓存" class="headerlink" title="本地缓存"></a>本地缓存</h2><p>本地缓存阶段</p><ul><li>Expires:指定缓存到期GMT的绝对时间，如果设了max-age，max-age就会覆盖expires。如果expires到期需要重新请求。</li><li>Cache-Control:cache-control优先级高于expires。<br>cache-control值:public,no-cache,no-store,max-age,min-fresh,max-stale.</li></ul><ol><li>public:表明响应可以被任何对象（包括：发送请求的客户端，代理服务器，等等）缓存。</li><li>private:表明响应只能被单个用户缓存，不能作为共享缓存（即代理服务器不能缓存它）。</li><li>no-cache:强制所有缓存了该响应的缓存用户，在使用已存储的缓存数据前，发送带验证器的请求到原始服务器。</li><li>only-if-cached：表明如果缓存存在，只使用缓存，无论原始服务器数据是否有更新。</li><li>max-age=：设置缓存存储的最大周期，超过这个时间缓存被认为过期(单位秒)。与Expires相反，时间是相对于请求的时间。</li><li>max-stale[=]：表面客户端愿意接收一个已经过期的资源。 可选的设置一个时间(单位秒)，表示响应不能超过的过时时间。</li><li>min-fresh=：表示客户端希望在指定的时间内获取最新的响应。</li><li>must-revalidate：缓存必须在使用之前验证旧资源的状态，并且不可使用过期资源。<br>详细见：<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Cache-Control" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Cache-Control</a></li></ol><h2 id="last-modified-if-modified-since"><a href="#last-modified-if-modified-since" class="headerlink" title="last-modified/if-modified-since"></a>last-modified/if-modified-since</h2><p>last-modified:表示这个响应资源的最后修改时间。<br>if-modified-since:当资源过期了(max-age)，发现资源有last-modified声明，则再次向服务器请求带上头部if-modified-since表示请求时间。web服务器收到之后发现有头部if-modified-since则与last-modified比较，如果last-modified比较新，则改动过，则响应整片内容；如果last-modified比较旧，则无修改，响应http304状态码，告诉浏览器继续使用所保存的cache。</p><h2 id="expires"><a href="#expires" class="headerlink" title="expires"></a>expires</h2><p>expires 是比较老的强缓存，是服务器返回的一个时间。<br>强缓存：为这些静态资源全部配置一个超时时间较长的expires或cache-control，这样用户在第一次加载时从服务器请求静态资源，其他时间只要缓存没有失效并用户没有强制刷新的条件下都会从自己的缓存中加载。<br>使用缓存，如果版本更新，在修改过的url加上时间戳，或者修改原本的时间戳。<br>强缓存–&gt;协商缓存(利用last-modified,if-modified-since,etag,if-none-match)</p><p>刷新：ctrl+f5: 跳过强缓存和协商缓存<br>f5: 跳过强缓存，会检查协商缓存</p><p>资源参考：<br><a href="http://imweb.io/topic/55c6f9bac222e3af6ce235b9" target="_blank" rel="noopener">http://imweb.io/topic/55c6f9bac222e3af6ce235b9</a><br><a href="https://segmentfault.com/a/1190000006689795" target="_blank" rel="noopener">https://segmentfault.com/a/1190000006689795</a><br><a href="http://imweb.io/topic/55c6f9bac222e3af6ce235b9" target="_blank" rel="noopener">http://imweb.io/topic/55c6f9bac222e3af6ce235b9</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;HTTP缓存机制&quot;&gt;&lt;a href=&quot;#HTTP缓存机制&quot; class=&quot;headerlink&quot; title=&quot;HTTP缓存机制&quot;&gt;&lt;/a&gt;HTTP缓存机制&lt;/h2&gt;&lt;p&gt;缓存行为主要由缓存策略决定，而缓存策略由内容拥有者设置。这些策略主要通过特定的HTTP头部来
+      
+    
+    </summary>
+    
+      <category term="缓存" scheme="https://qiuyuxiu.github.io/MyBlog/categories/%E7%BC%93%E5%AD%98/"/>
+    
+    
+      <category term="缓存" scheme="https://qiuyuxiu.github.io/MyBlog/tags/%E7%BC%93%E5%AD%98/"/>
+    
+  </entry>
   
   <entry>
     <title>Node.js文件操作</title>
