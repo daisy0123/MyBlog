@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="个人博客">
 <meta property="og:description" content="盒子模型在网页中，一个元素占有空间的大小由几个部分构成，其中包括元素的内容（content），元素的内边距（padding），元素的边框（border），元素的外边距（margin）四个部分。这四个部分占有的空间中，有的部分可以显示相应的内容，而有的部分只用来分隔相邻的区域或区域。4个部分一起构成了css中元素的盒模型。有标准盒子模型，IE盒子模型。标准盒子模型的元素宽度是元素的内容content">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-07T09:42:49.898Z">
+<meta property="og:updated_time" content="2018-06-07T09:45:43.469Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS知识">
 <meta name="twitter:description" content="盒子模型在网页中，一个元素占有空间的大小由几个部分构成，其中包括元素的内容（content），元素的内边距（padding），元素的边框（border），元素的外边距（margin）四个部分。这四个部分占有的空间中，有的部分可以显示相应的内容，而有的部分只用来分隔相邻的区域或区域。4个部分一起构成了css中元素的盒模型。有标准盒子模型，IE盒子模型。标准盒子模型的元素宽度是元素的内容content">
@@ -346,20 +346,38 @@
       
         <h2 id="盒子模型"><a href="#盒子模型" class="headerlink" title="盒子模型"></a>盒子模型</h2><p>在网页中，一个元素占有空间的大小由几个部分构成，其中包括元素的内容（content），元素的内边距（padding），元素的边框（border），元素的外边距（margin）四个部分。这四个部分占有的空间中，有的部分可以显示相应的内容，而有的部分只用来分隔相邻的区域或区域。4个部分一起构成了css中元素的盒模型。<br>有标准盒子模型，IE盒子模型。标准盒子模型的元素宽度是元素的内容content的width；IE盒子模型元素的宽度则包括content的width+padding+border。<br>CSS3中新增了一种盒模型计算方式：box-sizing熟悉。盒模型默认的值是content-box, 新增的值是padding-box和border-box，几种盒模型计算元素宽高的区别如下：</p>
 <ul>
-<li>content-box（默认）<br>布局所占宽度Width：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Width = width + padding-left + padding-right + border-left + border-right</span><br></pre></td></tr></table></figure>
-</li>
+<li>content-box（默认）</li>
 </ul>
-<p>布局所占高度Height:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Height = height + padding-top + padding-bottom + border-top + border-bottom</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li><p>布局所占宽度Width：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Width = width + padding-left + padding-right + border-left + border-right</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>布局所占高度Height:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Height = height + padding-top + padding-bottom + border-top + border-bottom</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 <ul>
-<li>padding-box<br>布局所占宽度Width：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Width = width(包含padding-left + padding-right) + border-top + border-bottom</span><br></pre></td></tr></table></figure>
-</li>
+<li>padding-box</li>
 </ul>
-<p>布局所占高度Height:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Height = height(包含padding-top + padding-bottom) + border-top + border-bottom</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li><p>布局所占宽度Width：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Width = width(包含padding-left + padding-right) + border-top + border-bottom</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>布局所占高度Height:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Height = height(包含padding-top + padding-bottom) + border-top + border-bottom</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 <ul>
-<li>border-box<br>布局所占宽度Width：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Width = width(包含padding-left + padding-right + border-left + border-right)</span><br></pre></td></tr></table></figure>
-</li>
+<li>border-box</li>
 </ul>
-<p>布局所占高度Height:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Height = height(包含padding-top + padding-bottom + border-top + border-bottom)</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li><p>布局所占宽度Width：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Width = width(包含padding-left + padding-right + border-left + border-right)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>布局所占高度Height:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Height = height(包含padding-top + padding-bottom + border-top + border-bottom)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 <h2 id="元素分类"><a href="#元素分类" class="headerlink" title="元素分类"></a>元素分类</h2><ol>
 <li>行内元素：a、b、span、img、input、strong、select、label、em、button、textarea</li>
 <li>块级元素：div、ul、li、dl、dt、dd、p、h1-h6、blockquote</li>
