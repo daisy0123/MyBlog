@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/MyBlog/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/MyBlog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/MyBlog/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/MyBlog/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/MyBlog/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/MyBlog/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/MyBlog/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="CSS," />
+
+
+
+
+
+  <link rel="alternate" href="/MyBlog/atom.xml" title="个人博客" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="盒子模型在网页中，一个元素占有空间的大小由几个部分构成，其中包括元素的内容（content），元素的内边距（padding），元素的边框（border），元素的外边距（margin）四个部分。这四个部分占有的空间中，有的部分可以显示相应的内容，而有的部分只用来分隔相邻的区域或区域。4个部分一起构成了css中元素的盒模型。有标准盒子模型，IE盒子模型。标准盒子模型的元素宽度是元素的内容content">
+<meta name="keywords" content="CSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS知识">
+<meta property="og:url" content="https://qiuyuxiu.github.io/MyBlog/2017/06/12/CSS知识/index.html">
+<meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="盒子模型在网页中，一个元素占有空间的大小由几个部分构成，其中包括元素的内容（content），元素的内边距（padding），元素的边框（border），元素的外边距（margin）四个部分。这四个部分占有的空间中，有的部分可以显示相应的内容，而有的部分只用来分隔相邻的区域或区域。4个部分一起构成了css中元素的盒模型。有标准盒子模型，IE盒子模型。标准盒子模型的元素宽度是元素的内容content">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-06-07T09:42:49.898Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS知识">
+<meta name="twitter:description" content="盒子模型在网页中，一个元素占有空间的大小由几个部分构成，其中包括元素的内容（content），元素的内边距（padding），元素的边框（border），元素的外边距（margin）四个部分。这四个部分占有的空间中，有的部分可以显示相应的内容，而有的部分只用来分隔相邻的区域或区域。4个部分一起构成了css中元素的盒模型。有标准盒子模型，IE盒子模型。标准盒子模型的元素宽度是元素的内容content">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/MyBlog/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://qiuyuxiu.github.io/MyBlog/2017/06/12/CSS知识/"/>
+
+
+
+
+
+  <title>CSS知识 | 个人博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/MyBlog/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">有关于前端学习的个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/MyBlog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/MyBlog/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/MyBlog/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/MyBlog/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://qiuyuxiu.github.io/MyBlog/MyBlog/2017/06/12/CSS知识/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Daisy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/MyBlog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">CSS知识</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-12T17:05:08+08:00">
+                2017-06-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/MyBlog/categories/CSS/" itemprop="url" rel="index">
+                    <span itemprop="name">CSS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="盒子模型"><a href="#盒子模型" class="headerlink" title="盒子模型"></a>盒子模型</h2><p>在网页中，一个元素占有空间的大小由几个部分构成，其中包括元素的内容（content），元素的内边距（padding），元素的边框（border），元素的外边距（margin）四个部分。这四个部分占有的空间中，有的部分可以显示相应的内容，而有的部分只用来分隔相邻的区域或区域。4个部分一起构成了css中元素的盒模型。<br>有标准盒子模型，IE盒子模型。标准盒子模型的元素宽度是元素的内容content的width；IE盒子模型元素的宽度则包括content的width+padding+border。<br>CSS3中新增了一种盒模型计算方式：box-sizing熟悉。盒模型默认的值是content-box, 新增的值是padding-box和border-box，几种盒模型计算元素宽高的区别如下：</p>
+<ul>
+<li>content-box（默认）<br>布局所占宽度Width：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Width = width + padding-left + padding-right + border-left + border-right</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>布局所占高度Height:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Height = height + padding-top + padding-bottom + border-top + border-bottom</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>padding-box<br>布局所占宽度Width：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Width = width(包含padding-left + padding-right) + border-top + border-bottom</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>布局所占高度Height:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Height = height(包含padding-top + padding-bottom) + border-top + border-bottom</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>border-box<br>布局所占宽度Width：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Width = width(包含padding-left + padding-right + border-left + border-right)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>布局所占高度Height:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Height = height(包含padding-top + padding-bottom + border-top + border-bottom)</span><br></pre></td></tr></table></figure></p>
+<h2 id="元素分类"><a href="#元素分类" class="headerlink" title="元素分类"></a>元素分类</h2><ol>
+<li>行内元素：a、b、span、img、input、strong、select、label、em、button、textarea</li>
+<li>块级元素：div、ul、li、dl、dt、dd、p、h1-h6、blockquote</li>
+<li>空元素：即系没有内容的HTML元素，例如：br、meta、hr、link、input、img</li>
+</ol>
+<h2 id="文字溢出"><a href="#文字溢出" class="headerlink" title="文字溢出"></a>文字溢出</h2><p>text-overflow(对溢出的文字使用省略号)</p>
+<ol>
+<li><p>单行文字</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">overflow: hidden;</span><br><span class="line">text-overflow: ellipsis;</span><br><span class="line">white-space: nowrap;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>多行文字</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">overflow:hidden;</span><br><span class="line">text-overflow:ellipsis;</span><br><span class="line">display:-webkit-box;</span><br><span class="line">-webkit-line-clamp:1;(行数)</span><br><span class="line">-webkit-box-orient:vertical;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="CSS实现垂直水平居中"><a href="#CSS实现垂直水平居中" class="headerlink" title="CSS实现垂直水平居中"></a>CSS实现垂直水平居中</h2><ol>
+<li>line-height: 高度;text-align：center;单行文字，图片</li>
+<li>绝对定位居中：<br>(1)margin:0 auto;position: absolute;top:50%;left:0;right:0;bottom:0;margin-top:-(height/2);<br>(2)margin:auto;position: absolute;top:0;left:0;right:0;bottom:0;<br>(3)不知道高度时候：position: absolute;top:50%;left:50%;transform: translate(-50%,-50%);</li>
+<li>模拟表格效果：IE6-IE7不支持<br>父元素：display:table;<br>子元素：display:table-cell;vertical-align:middle;</li>
+<li><p>使用display:inline-block; 借用另一个元素的高度。（少用）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;parent&quot;&gt;</span><br><span class="line">  &lt;div id=&quot;vertically-center&quot;&gt;</span><br><span class="line">    &lt;p&gt;aaabbb&lt;/p&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">  &lt;div id=&quot;extra&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">html,body&#123;</span><br><span class="line">  height:100%;</span><br><span class="line">&#125;</span><br><span class="line">#parent:&#123;height:500px;&#125;</span><br><span class="line">#vertical-center,#extra&#123;display:inline-block;vertical-align:middle;&#125;</span><br><span class="line">#extra&#123;height:100%;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>多行内容居中：padding值设置。</p>
+</li>
+<li>使用flexbox：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">display:flex;justify-content:center;align-items:center;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="CSS-Hack"><a href="#CSS-Hack" class="headerlink" title="CSS Hack"></a>CSS Hack</h2><p>一般来说是针对不同的浏览器写不同的CSS,就是 CSS Hack。<br>IE浏览器Hack一般又分为三种，条件Hack、属性级Hack、选择符Hack（详细参考CSS文档：css文档）。例如：</p>
+<ol>
+<li><p>条件Hack</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--[if IE]&gt;</span><br><span class="line">   &lt;style&gt;</span><br><span class="line">      .test&#123;color:red;&#125;</span><br><span class="line">   &lt;/style&gt;</span><br><span class="line">&lt;![endif]--&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>属性Hack</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.test&#123;</span><br><span class="line">  color:#090\9; /* For IE8+ */</span><br><span class="line">  *color:#f00;  /* For IE7 and earlier */</span><br><span class="line">  _color:#ff0;  /* For IE6 and earlier */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>选择符Hack</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">* html .test&#123;color:#090;&#125;       /* For IE6 and earlier */</span><br><span class="line">* + html .test&#123;color:#ff0;&#125;     /* For IE7 */</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="px和em的区别"><a href="#px和em的区别" class="headerlink" title="px和em的区别"></a>px和em的区别</h2><p>px和em都是长度单位，区别是，px的值是固定的，指定是多少就是多少，计算比较容易。em的值不是固定的，并且em会继承父级元素的字体大小。<br>浏览器的默认字体高都是16px。所以未经调整的浏览器都符合: 1em=16px。那么12px=0.75em, 10px=0.625em<br>rem是以根元素的字体大小为参照，即以html，body的font-size作为参照，所以rem是手机适配设置的方法之一。</p>
+<h2 id="CSS属性"><a href="#CSS属性" class="headerlink" title="CSS属性"></a>CSS属性</h2><ul>
+<li>background-size<br>对图片的铺满等设置：一般使用background-image,background-size:cover/contain/100%…<br>渐变问题：background:linear-gradient(top/bottom/角度…,fromColor,toColor);</li>
+<li><p>opacity</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">opacity:0.5;</span><br><span class="line">filter:alpha(opacity=0.5)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>transform</p>
+</li>
+</ul>
+<ol>
+<li>transform:skew()/translate()/rotate()/scale()/matrix();</li>
+<li>transition:(过渡) 样式 0.5s linear;</li>
+<li>transition-timing-function: linear|ease|ease-in|ease-out|ease-in-out|cubic-bezier(n,n,n,n);<br>详情见 <a href="http://www.w3school.com.cn/cssref/pr_transition.asp" target="_blank" rel="noopener">http://www.w3school.com.cn/cssref/pr_transition.asp</a></li>
+</ol>
+<ul>
+<li>background<br>backface-visibility:hidden;不可见<br>background-clip:背景的边界不同 (content-box,border-box,padding-box);相当于截图</li>
+<li>column<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">.three-column&#123;</span><br><span class="line">	padding: 1em;</span><br><span class="line">	-moz-column-count: 3;</span><br><span class="line">	-moz-column-gap: 1em;</span><br><span class="line">	-webkit-column-count: 3;</span><br><span class="line">	-webkit-column-gap: 1em;</span><br><span class="line">	column-count: 3;</span><br><span class="line">	column-gap: 1em;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="三个兼容浏览器的css前缀"><a href="#三个兼容浏览器的css前缀" class="headerlink" title="三个兼容浏览器的css前缀"></a>三个兼容浏览器的css前缀</h2><p>-webkit- : Safari 和 Chrome<br>-moz- : Firefox 4<br>-o- : Opera</p>
+<h2 id="rem与em计算"><a href="#rem与em计算" class="headerlink" title="rem与em计算"></a>rem与em计算</h2><p>em=1/父元素的font-size * 需转换的像素值<br>默认 16px=1em<br>看根元素的px值，根元素的px值=1rem。</p>
+<h2 id="弹性盒子模型flex"><a href="#弹性盒子模型flex" class="headerlink" title="弹性盒子模型flex"></a>弹性盒子模型flex</h2><p>display：flex;</p>
+<ul>
+<li>父元素（6属性）：flex-direction,flex-wrap,flex-flow,justify-content,align-items,align-content</li>
+</ul>
+<ol>
+<li>flex-direction属性决定主轴的方向（即项目的排列方向）。<br><code>flex-direction: row | row-reverse | column | column-reverse;</code></li>
+<li>flex-wrap属性<br>默认情况下，项目都排在一条线（又称”轴线”）上。flex-wrap属性定义，如果一条轴线排不下，如何换行。<br><code>flex-wrap: nowrap | wrap | wrap-reverse;</code></li>
+<li>flex-flow属性是flex-direction属性和flex-wrap属性的简写形式，默认值为row nowrap。<br><code>flex-flow: &lt;flex-direction&gt; || &lt;flex-wrap&gt;;</code></li>
+<li>justify-content属性定义了项目在主轴上的对齐方式。<br><code>justify-content: flex-start | flex-end | center | space-between | space-around;</code></li>
+<li>align-items属性定义项目在交叉轴上如何对齐。<br><code>align-items: flex-start | flex-end | center | baseline | stretch;</code></li>
+<li>align-content属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。<br><code>align-content: flex-start | flex-end | center | space-between | space-around | stretch;</code></li>
+</ol>
+<ul>
+<li>子元素（6属性）：order,flex-grow,flex-shrink,flex-basis,flex,align-self</li>
+</ul>
+<ol>
+<li>order属性定义项目的排列顺序。数值越小，排列越靠前，默认为0。<br><code>order: &lt;integer&gt;;</code></li>
+<li>flex-grow属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大。<br><code>flex-grow: &lt;number&gt;; /* default 0 */</code></li>
+<li>flex-shrink属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。<br><code>flex-shrink: &lt;number&gt;; /* default 1 */</code></li>
+<li>flex-basis属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小。<br><code>flex-basis: &lt;length&gt; | auto; /* default auto */</code></li>
+<li>flex属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。</li>
+<li>align-self属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。<br><code>align-self: auto | flex-start | flex-end | center | baseline | stretch;</code><br>参考阮一峰博客：<br><a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html]" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html]</a><br><a href="http://www.ruanyifeng.com/blog/2015/07/flex-examples.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2015/07/flex-examples.html</a></li>
+</ol>
+<h2 id="媒体查询"><a href="#媒体查询" class="headerlink" title="媒体查询"></a>媒体查询</h2><p>bootstrap 的响应式布局原理就是使用了媒体查询。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@media screen and (min-width:600px)&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="CSS3"><a href="#CSS3" class="headerlink" title="CSS3"></a>CSS3</h2><ol>
+<li>CSS3边框<br>border-radius,box-shadow,border-image</li>
+<li>CSS3背景<br>background-image,background-size,background-origin,background-repeat,background-position,background-clip(背景裁剪属性)<br>background-origin: border-box|content-box;<br>background-clip: border-box|padding-box|content-box;</li>
+<li>CSS3渐变<br>background:linear-gradient(direction,color-stop1,color-stop2…)<br>repeat-linear-gradient:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#grad1 &#123;</span><br><span class="line">  background-image: repeating-linear-gradient(180deg,rgb(26,198,204),rgb(26,198,204) 7%, rgb(100,100,100) 10%);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>background: radial-gradient(center,shareSize,start-color,…,end-color);<br>详情见：<a href="http://www.cnblogs.com/lhb25/archive/2013/02/24/css3-radial-gradient.html" target="_blank" rel="noopener">css3-radial-gradient</a></p>
+<ol start="4">
+<li>CSS3文本效果<br>text-shadow,box-shadow,text-overflow,word-wrap,word-break<br>允许长文本换行：word-wrap: break-word;<br>单词拆分换行：word-break:keep-all;</li>
+<li>2D转换<br>translate():通过 translate() 方法，元素从其当前位置移动，根据给定的 left（x 坐标） 和 top（y 坐标） 位置参数。<br>rotate():通过 rotate() 方法，元素顺时针旋转给定的角度。允许负值，元素将逆时针旋转。<br>scale():通过 scale() 方法，元素的尺寸会增加或减少，根据给定的宽度（X 轴）和高度（Y 轴）参数。<br>skew():通过 skew() 方法，元素翻转给定的角度，根据给定的水平线（X 轴）和垂直线（Y 轴）参数。<br>matrix():<br>matrix()方法把所有 2D 转换方法组合在一起。<br>matrix()方法需要六个参数，包含数学函数，允许旋转、缩放、移动以及倾斜元素。</li>
+<li>3D转换<br>translateY(),translate3D()….<br>matrix3d(n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n) 定义 3D 转换，使用 16 个值的 4x4 矩阵。<br>translate3d(x,y,z) 定义 3D 转化。<br>translateX(x) 定义 3D 转化，仅使用用于 X 轴的值。<br>translateY(y) 定义 3D 转化，仅使用用于 Y 轴的值。<br>translateZ(z) 定义 3D 转化，仅使用用于 Z 轴的值。<br>scale3d(x,y,z) 定义 3D 缩放转换。<br>scaleX(x) 定义 3D 缩放转换，通过给定一个 X 轴的值。<br>scaleY(y) 定义 3D 缩放转换，通过给定一个 Y 轴的值。<br>scaleZ(z) 定义 3D 缩放转换，通过给定一个 Z 轴的值。<br>rotate3d(x,y,z,angle) 定义 3D 旋转。<br>rotateX(angle) 定义沿 X 轴的 3D 旋转。<br>rotateY(angle) 定义沿 Y 轴的 3D 旋转。<br>rotateZ(angle) 定义沿 Z 轴的 3D 旋转。<br>perspective(n) 定义 3D 转换元素的透视视图。</li>
+<li><p>3D过渡<br>transition-property<br>transition-duration<br>transition-timing-function<br>transition-delay<br>语法:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">transition: property duration timing-function delay;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>CSS3动画<br>@keyframes规则：from to | 百分比时间帧</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@keyframes myfirst&#123;</span><br><span class="line">  from&#123;background: red;&#125;</span><br><span class="line">  to&#123;background: blue;&#125;</span><br><span class="line">&#125;</span><br><span class="line">div&#123;animation:myfirst 5s;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>CSS3图片<br>响应式图片：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">img&#123;</span><br><span class="line">  max-width:100%;</span><br><span class="line">  height:auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="CSS书写顺序"><a href="#CSS书写顺序" class="headerlink" title="CSS书写顺序"></a>CSS书写顺序</h2><ol>
+<li>位置属性：(position,top,right,z-index,display,float)</li>
+<li>水平：(width,height,padding,margin)</li>
+<li>文字系列：(font,line-height,letter-spacing)</li>
+<li>背景：(background,border)</li>
+<li>其他：(animation,transition)</li>
+</ol>
+<h2 id="自定义字体"><a href="#自定义字体" class="headerlink" title="自定义字体"></a>自定义字体</h2><p>@font-face<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@font-face&#123;</span><br><span class="line">  font-family:&lt;yourFontName&gt;;</span><br><span class="line">  src: &lt;source&gt;;</span><br><span class="line">  [font-weight:&lt;weight&gt;];</span><br><span class="line">  [font-style:&lt;style&gt;];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="浮动与清除浮动"><a href="#浮动与清除浮动" class="headerlink" title="浮动与清除浮动"></a>浮动与清除浮动</h2><p>浮动：浮动的框可以左右移动，直至它的外边缘遇到包含框或者另一个浮动框的边缘。<br>浮动框不属于文档中的普通流，当一个元素浮动之后，不会影响到块级框的布局而只会影响内联框（通常是文本）的排列，文档中的普通流就会表现得和浮动框不存在一样，当浮动框高度超出包含框的时候，也就会出现包含框不会自动伸高来闭合浮动元素（“高度塌陷”现象）。顾名思义，就是漂浮于普通流之上，像浮云一样，但是只能左右浮动。显然标准流已经无法满足需求，这就要用到浮动。 浮动可以理解为让某个div元素脱离标准流，漂浮在标准流之上，和标准流不是一个层次。<br>造成高度塌陷：父类div不计算浮动元素的高度。<br>(1)父级div手动定义height<br>(2)父级div：overflow:hidden(不使用position)<br>(3)加空标签：clear:both<br>(4)父级使用伪类:after<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">:after&#123;</span><br><span class="line">  display:block;</span><br><span class="line">  clear:both;</span><br><span class="line">  content:&quot;&quot;;</span><br><span class="line">  visibility:hidden;</span><br><span class="line">  height:0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>//IE兼容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  zoom:1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="CSS布局"><a href="#CSS布局" class="headerlink" title="CSS布局"></a>CSS布局</h2><p>两栏布局，双飞翼布局，圣杯布局，响应式布局，瀑布流布局</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/MyBlog/tags/CSS/" rel="tag"># CSS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/MyBlog/2017/06/12/Node-js创建服务器/" rel="next" title="Node.js创建服务器">
+                <i class="fa fa-chevron-left"></i> Node.js创建服务器
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Daisy</p>
+              <p class="site-description motion-element" itemprop="description">前端技术个人博客</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/MyBlog/archives/">
+              
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/MyBlog/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/MyBlog/tags/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/MyBlog/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#盒子模型"><span class="nav-number">1.</span> <span class="nav-text">盒子模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#元素分类"><span class="nav-number">2.</span> <span class="nav-text">元素分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文字溢出"><span class="nav-number">3.</span> <span class="nav-text">文字溢出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS实现垂直水平居中"><span class="nav-number">4.</span> <span class="nav-text">CSS实现垂直水平居中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS-Hack"><span class="nav-number">5.</span> <span class="nav-text">CSS Hack</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#px和em的区别"><span class="nav-number">6.</span> <span class="nav-text">px和em的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS属性"><span class="nav-number">7.</span> <span class="nav-text">CSS属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三个兼容浏览器的css前缀"><span class="nav-number">8.</span> <span class="nav-text">三个兼容浏览器的css前缀</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rem与em计算"><span class="nav-number">9.</span> <span class="nav-text">rem与em计算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#弹性盒子模型flex"><span class="nav-number">10.</span> <span class="nav-text">弹性盒子模型flex</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#媒体查询"><span class="nav-number">11.</span> <span class="nav-text">媒体查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS3"><span class="nav-number">12.</span> <span class="nav-text">CSS3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS书写顺序"><span class="nav-number">13.</span> <span class="nav-text">CSS书写顺序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义字体"><span class="nav-number">14.</span> <span class="nav-text">自定义字体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浮动与清除浮动"><span class="nav-number">15.</span> <span class="nav-text">浮动与清除浮动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS布局"><span class="nav-number">16.</span> <span class="nav-text">CSS布局</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Daisy</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/MyBlog/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/MyBlog/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/MyBlog/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/MyBlog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/MyBlog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/MyBlog/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/MyBlog/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/MyBlog/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/MyBlog/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/MyBlog/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/MyBlog/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
