@@ -6,7 +6,7 @@
   <link href="/MyBlog/atom.xml" rel="self"/>
   
   <link href="https://qiuyuxiu.github.io/MyBlog/"/>
-  <updated>2018-06-07T11:28:04.702Z</updated>
+  <updated>2018-06-07T11:31:36.329Z</updated>
   <id>https://qiuyuxiu.github.io/MyBlog/</id>
   
   <author>
@@ -18,10 +18,10 @@
   
   <entry>
     <title>BFC与IFC</title>
-    <link href="https://qiuyuxiu.github.io/MyBlog/2018/06/07/BFC%E4%B8%8EIFC/"/>
-    <id>https://qiuyuxiu.github.io/MyBlog/2018/06/07/BFC与IFC/</id>
-    <published>2018-06-07T11:21:50.000Z</published>
-    <updated>2018-06-07T11:28:04.702Z</updated>
+    <link href="https://qiuyuxiu.github.io/MyBlog/2017/06/13/BFC%E4%B8%8EIFC/"/>
+    <id>https://qiuyuxiu.github.io/MyBlog/2017/06/13/BFC与IFC/</id>
+    <published>2017-06-13T11:21:50.000Z</published>
+    <updated>2018-06-07T11:31:36.329Z</updated>
     
     <content type="html"><![CDATA[<h2 id="BFC"><a href="#BFC" class="headerlink" title="BFC"></a>BFC</h2><p>BFC：独立的渲染区域，与这个区域外部毫不相干</p><ul><li>条件：</li></ul><ol><li>根元素或其它包含它的元素</li><li>浮动 (元素的 float 不是 none)</li><li>绝对定位的元素 (元素具有 position 为 absolute 或 fixed)</li><li>非块级元素具有 display: inline-block，table-cell, table-caption, flex, inline-flex</li><li>块级元素具有overflow ，且值不是 visible</li></ol><ul><li>作用：</li></ul><ol><li>利用BFC阻止文本换行</li><li>自适应两栏布局，不受float影响;</li><li>清除内部浮动，计算浮动高度；</li><li>防止垂直margin重叠：overflow:hidden。</li></ol><p>关于BFC:</p><ol><li>内部的Box会在垂直方向，一个接一个地放置。</li><li>Box垂直方向的距离由margin决定。属于同一个BFC的两个相邻Box的margin会发生重叠</li><li>每个元素的左外边缘（margin-left)， 与包含块的左边（contain box left）相接触(对于从左往右的格式化，否则相反)。即使存在浮动也是如此。除非这个元素自己形成了一个新的BFC。</li><li>BFC的区域不会与float box重叠。</li><li>BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素。反之也如此。</li><li>计算BFC的高度时，浮动元素也参与计算</li></ol><h2 id="IFC"><a href="#IFC" class="headerlink" title="IFC"></a>IFC</h2><p>IFC：线框高度由其行内元素中最高的实际高度计算而来（不受竖直方向中的padding和margin影响）<br>IFC: font-size,line-height,height,vertical-align</p><p>资料查询：<br><a href="https://segmentfault.com/a/1190000009545742" target="_blank" rel="noopener">https://segmentfault.com/a/1190000009545742</a><br><a href="http://www.cnblogs.com/Candybunny/p/6222939.html" target="_blank" rel="noopener">http://www.cnblogs.com/Candybunny/p/6222939.html</a><br><a href="http://www.myronliu.com/2016/03/04/css/css%E5%B8%83%E5%B1%80-BFC%E5%92%8CIFC/" target="_blank" rel="noopener">http://www.myronliu.com/2016/03/04/css/css%E5%B8%83%E5%B1%80-BFC%E5%92%8CIFC/</a></p>]]></content>
     
@@ -42,11 +42,11 @@
       <category term="CSS" scheme="https://qiuyuxiu.github.io/MyBlog/categories/CSS/"/>
     
     
+      <category term="CSS" scheme="https://qiuyuxiu.github.io/MyBlog/tags/CSS/"/>
+    
       <category term="BFC" scheme="https://qiuyuxiu.github.io/MyBlog/tags/BFC/"/>
     
       <category term="IFC" scheme="https://qiuyuxiu.github.io/MyBlog/tags/IFC/"/>
-    
-      <category term="CSS" scheme="https://qiuyuxiu.github.io/MyBlog/tags/CSS/"/>
     
   </entry>
   
