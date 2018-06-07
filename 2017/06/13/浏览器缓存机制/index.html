@@ -89,12 +89,12 @@
 <meta property="og:site_name" content="个人博客">
 <meta property="og:description" content="HTTP缓存机制缓存行为主要由缓存策略决定，而缓存策略由内容拥有者设置。这些策略主要通过特定的HTTP头部来清晰地表达。当一个用户发起一个静态资源请求的时候，浏览器会通过以下几步来获取资源：  本地缓存阶段：先在本地查找该资源，如果有发现该资源，而且该资源还没有过期，就使用这一个资源，完全不会发送http请求到服务器； 协商缓存阶段：如果在本地缓存找到对应的资源，但是如果该资源已经过期，则发一个h">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://qiuyuxiu.github.io/MyBlog/2017/06/images/pic5.png">
-<meta property="og:updated_time" content="2018-06-07T10:49:35.941Z">
+<meta property="og:image" content="https://qiuyuxiu.github.io/MyBlog/images/pic5.png">
+<meta property="og:updated_time" content="2018-06-07T10:53:11.934Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浏览器缓存机制">
 <meta name="twitter:description" content="HTTP缓存机制缓存行为主要由缓存策略决定，而缓存策略由内容拥有者设置。这些策略主要通过特定的HTTP头部来清晰地表达。当一个用户发起一个静态资源请求的时候，浏览器会通过以下几步来获取资源：  本地缓存阶段：先在本地查找该资源，如果有发现该资源，而且该资源还没有过期，就使用这一个资源，完全不会发送http请求到服务器； 协商缓存阶段：如果在本地缓存找到对应的资源，但是如果该资源已经过期，则发一个h">
-<meta name="twitter:image" content="https://qiuyuxiu.github.io/MyBlog/2017/06/images/pic5.png">
+<meta name="twitter:image" content="https://qiuyuxiu.github.io/MyBlog/images/pic5.png">
 
 
 
@@ -352,7 +352,7 @@
 <li>协商缓存阶段：如果在本地缓存找到对应的资源，但是如果该资源已经过期，则发一个http请求到服务器,然后服务器判断这个请求，如果请求的资源在服务器上没有改动过，则返回304，让浏览器使用本地找到的那个资源；</li>
 <li>缓存失败阶段：当服务器发现请求的资源已经修改过，或者这是一个新的请求(在本来没有找到资源)，服务器则返回该资源的数据，并且返回200， 当然这个是指找到资源的情况下，如果服务器上没有这个资源，则返回404。</li>
 </ol>
-<h2 id="用户操作行为与缓存"><a href="#用户操作行为与缓存" class="headerlink" title="用户操作行为与缓存"></a>用户操作行为与缓存</h2><p><img src="../../images/pic5.png" alt="用户操作行为与缓存图"></p>
+<h2 id="用户操作行为与缓存"><a href="#用户操作行为与缓存" class="headerlink" title="用户操作行为与缓存"></a>用户操作行为与缓存</h2><p><img src="../../../../images/pic5.png" alt="用户操作行为与缓存图"></p>
 <h2 id="本地缓存"><a href="#本地缓存" class="headerlink" title="本地缓存"></a>本地缓存</h2><p>本地缓存阶段</p>
 <ul>
 <li>Expires:指定缓存到期GMT的绝对时间，如果设了max-age，max-age就会覆盖expires。如果expires到期需要重新请求。</li>
