@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/MyBlog/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/MyBlog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/MyBlog/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/MyBlog/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/MyBlog/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/MyBlog/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/MyBlog/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="WebMoblie,H5," />
+
+
+
+
+
+  <link rel="alternate" href="/MyBlog/atom.xml" title="个人博客" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="设置meta标签12345678&amp;lt;!--添加viewport标签--&amp;gt;&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0&amp;quot; /&amp;gt;&amp;lt;!--禁止将数字变为电话号码--&amp;gt;&amp;">
+<meta name="keywords" content="WebMoblie,H5">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Web Moblie实现H5">
+<meta property="og:url" content="https://qiuyuxiu.github.io/MyBlog/2017/06/14/Web-Moblie实现H5/index.html">
+<meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="设置meta标签12345678&amp;lt;!--添加viewport标签--&amp;gt;&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0&amp;quot; /&amp;gt;&amp;lt;!--禁止将数字变为电话号码--&amp;gt;&amp;">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-06-08T15:00:34.544Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Web Moblie实现H5">
+<meta name="twitter:description" content="设置meta标签12345678&amp;lt;!--添加viewport标签--&amp;gt;&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0&amp;quot; /&amp;gt;&amp;lt;!--禁止将数字变为电话号码--&amp;gt;&amp;">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/MyBlog/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://qiuyuxiu.github.io/MyBlog/2017/06/14/Web-Moblie实现H5/"/>
+
+
+
+
+
+  <title>Web Moblie实现H5 | 个人博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/MyBlog/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">有关于前端学习的个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/MyBlog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/MyBlog/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/MyBlog/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/MyBlog/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://qiuyuxiu.github.io/MyBlog/MyBlog/2017/06/14/Web-Moblie实现H5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Daisy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/MyBlog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Web Moblie实现H5</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-14T10:29:06+08:00">
+                2017-06-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/MyBlog/categories/WebMoblie/" itemprop="url" rel="index">
+                    <span itemprop="name">WebMoblie</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="设置meta标签"><a href="#设置meta标签" class="headerlink" title="设置meta标签"></a>设置meta标签</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--添加viewport标签--&gt;</span><br><span class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0&quot; /&gt;</span><br><span class="line">&lt;!--禁止将数字变为电话号码--&gt;</span><br><span class="line">&lt;meta name=&quot;format-detection&quot; content=&quot;telephone=no&quot; /&gt;</span><br><span class="line">&lt;!--ios设备的safari的私有meta标签--&gt;</span><br><span class="line">&lt;meta name=&quot;apple-mobile-web-app-capable&quot; content=&quot;yes&quot; /&gt;</span><br><span class="line">&lt;!--ios的私有标签--&gt;</span><br><span class="line">&lt;meta name=&quot;apple-mobile-web-app-status-bar-style&quot; content=&quot;black&quot;&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="设置body、html的font-size"><a href="#设置body、html的font-size" class="headerlink" title="设置body、html的font-size"></a>设置body、html的font-size</h2><ul>
+<li><p>通过js设置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">(function(doc, win) &#123;</span><br><span class="line">	var docEl = doc.documentElement,</span><br><span class="line">		resizeEvt = &apos;orientationchange&apos; in window ? &apos;orientationchange&apos; : &apos;resize&apos;,</span><br><span class="line">		recalc = function() &#123;</span><br><span class="line">			var clientWidth = docEl.clientWidth;</span><br><span class="line">			if(!clientWidth) return;</span><br><span class="line">			docEl.style.fontSize = 20 * (clientWidth / 320) + &apos;px&apos;;</span><br><span class="line">		&#125;;</span><br><span class="line">	if(!doc.addEventListener) return;</span><br><span class="line">	win.addEventListener(resizeEvt, recalc, false);</span><br><span class="line">	doc.addEventListener(&apos;DOMContentLoaded&apos;, recalc, false)</span><br><span class="line">&#125;)(document, window);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过scss、less等设置<br>$num 为实际的px值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@function rem($num)&#123;</span><br><span class="line">  @return unquote(($num/100) + &apos;rem&apos;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>设置之后使用rem作为单位来适配手机屏幕</p>
+<h2 id="video-js的使用"><a href="#video-js的使用" class="headerlink" title="video.js的使用"></a>video.js的使用</h2><ol>
+<li><p>引入js，css文件,也可以直接下载到本地再引入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;link href=&quot;http://vjs.zencdn.net/4.12/video-js.css&quot; rel=&quot;stylesheet&quot;&gt;</span><br><span class="line">&lt;script src=&quot;http://vjs.zencdn.net/4.12/video.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用video标签</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;video id=&quot;example_video_1&quot; class=&quot;video-js vjs-default-skin&quot; controls</span><br><span class="line"> preload=&quot;auto&quot; width=&quot;640&quot; height=&quot;264&quot; poster=&quot;really-cool-video-poster.jpg&quot;</span><br><span class="line"> data-setup=&apos;&#123;&#125;&apos;&gt;</span><br><span class="line">  &lt;source src=&quot;really-cool-video.mp4&quot; type=&apos;video/mp4&apos;&gt;</span><br><span class="line">  &lt;source src=&quot;really-cool-video.webm&quot; type=&apos;video/webm&apos;&gt;</span><br><span class="line">  &lt;p class=&quot;vjs-no-js&quot;&gt;</span><br><span class="line">    To view this video please enable JavaScript, and consider upgrading to a web browser</span><br><span class="line">    that &lt;a href=&quot;http://videojs.com/html5-video-support/&quot; target=&quot;_blank&quot;&gt;supports HTML5 video&lt;/a&gt;</span><br><span class="line">  &lt;/p&gt;</span><br><span class="line">&lt;/video&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>也可以通过js改变值：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var myPlayer = videojs(&apos;example_video_1&apos;);</span><br><span class="line">videojs(&quot;example_video_1&quot;).ready(function()&#123;</span><br><span class="line">  var myPlayer = this;</span><br><span class="line">  // EXAMPLE: Start playing the video.</span><br><span class="line">  myPlayer.play();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h2 id="VideoJs-API方法："><a href="#VideoJs-API方法：" class="headerlink" title="VideoJs API方法："></a>VideoJs API方法：</h2><ol>
+<li><p>获取对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var videoObj = videojs(“videoId”);</span><br><span class="line">ready:</span><br><span class="line">myPlayer.ready(function()&#123;</span><br><span class="line">    //在回调函数中，this代表当前播放器，</span><br><span class="line">    //可以调用方法，也可以绑定事件。</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>播放:<code>myPlayer.play();</code></p>
+</li>
+<li>暂停:<code>myPlayer.pause();</code></li>
+<li>获取播放进度:<code>var whereYouAt = myPlayer.currentTime();</code></li>
+<li>设置播放进度:<code>myPlayer.currentTime(120);</code></li>
+<li>视频持续时间，加载完成视频才可以知道视频时长，且在flash情况下无效:<code>var howLongIsThis = myPlayer.duration();</code></li>
+<li>缓冲，就是返回下载了多少:<code>var whatHasBeenBuffered = myPlayer.buffered();</code></li>
+<li>百分比的缓冲:<code>var howMuchIsDownloaded = myPlayer.bufferedPercent();</code></li>
+<li>声音大小（0-1之间）:<code>var howLoudIsIt = myPlayer.volume();</code></li>
+<li>设置声音大小:<code>myPlayer.volume(0.5);</code></li>
+<li>取得视频的宽度:<code>var howWideIsIt = myPlayer.width();</code></li>
+<li>设置宽度:<code>myPlayer.width(640);</code></li>
+<li>获取高度:<code>var howTallIsIt = myPlayer.height();</code></li>
+<li>设置高度:<code>myPlayer.height(480);</code></li>
+<li>一步到位的设置大小:<code>myPlayer.size(640,480);</code></li>
+<li>全屏:<code>myPlayer.enterFullScreen();</code></li>
+<li>离开全屏:<code>myPlayer.enterFullScreen();</code></li>
+<li>添加事件: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">durationchange</span><br><span class="line">ended //播放结束</span><br><span class="line">firstplay</span><br><span class="line">fullscreenchange</span><br><span class="line">loadedalldata</span><br><span class="line">loadeddata</span><br><span class="line">loadedmetadata</span><br><span class="line">loadstart</span><br><span class="line">pause //暂停</span><br><span class="line">play //播放</span><br><span class="line">progress</span><br><span class="line">seeked</span><br><span class="line">seeking</span><br><span class="line">timeupdate</span><br><span class="line">volumechange</span><br><span class="line">waiting</span><br><span class="line">resize inherited</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var myFunc = function()&#123;</span><br><span class="line">// Do something when the event is fired</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<ol start="18">
+<li><p>事件绑定</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">myPlayer.on(&quot;ended&quot;, function()&#123;</span><br><span class="line">    console.log(&quot;end&quot;, this.currentTime());</span><br><span class="line">&#125;);</span><br><span class="line">myPlayer.on(&quot;pause&quot;, function()&#123;</span><br><span class="line">    console.log(&quot;pause&quot;)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除事件<br><code>myPlayer.removeEvent(“eventName”, myFunc);</code></p>
+</li>
+</ol>
+<h2 id="我遇到的坑："><a href="#我遇到的坑：" class="headerlink" title="我遇到的坑："></a>我遇到的坑：</h2><p>（1）video标签支持的视频的格式需要与规定的一致。<br>参考：<a href="http://www.w3school.com.cn/html5/html_5_video.asp" target="_blank" rel="noopener">http://www.w3school.com.cn/html5/html_5_video.asp</a><br>Ogg = 带有 Theora 视频编码和 Vorbis 音频编码的 Ogg 文件<br>MPEG4 = 带有 H.264 视频编码和 AAC 音频编码的 MPEG 4 文件<br>WebM = 带有 VP8 视频编码和 Vorbis 音频编码的 WebM 文件<br>（2）ios版本播放的问题<br>因为我是用Hbuiler测试手机的，设置了内置服务器之后，一直用ios手机访问都不成功，视频无法播放，找了无数种方法，结果是错在了服务器支持的MIME类型里。也就是我换成xampp作为服务器去访问时成功的！！！</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/MyBlog/tags/WebMoblie/" rel="tag"># WebMoblie</a>
+          
+            <a href="/MyBlog/tags/H5/" rel="tag"># H5</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/MyBlog/2017/06/14/Git基本操作/" rel="next" title="Git基本操作">
+                <i class="fa fa-chevron-left"></i> Git基本操作
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/MyBlog/2018/06/08/长连接-短连接-长轮询-短轮询/" rel="prev" title="长连接&短连接&长轮询&短轮询">
+                长连接&短连接&长轮询&短轮询 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Daisy</p>
+              <p class="site-description motion-element" itemprop="description">前端技术个人博客</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/MyBlog/archives/">
+              
+                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/MyBlog/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/MyBlog/tags/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/MyBlog/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#设置meta标签"><span class="nav-number">1.</span> <span class="nav-text">设置meta标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置body、html的font-size"><span class="nav-number">2.</span> <span class="nav-text">设置body、html的font-size</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#video-js的使用"><span class="nav-number">3.</span> <span class="nav-text">video.js的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VideoJs-API方法："><span class="nav-number">4.</span> <span class="nav-text">VideoJs API方法：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#我遇到的坑："><span class="nav-number">5.</span> <span class="nav-text">我遇到的坑：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Daisy</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/MyBlog/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/MyBlog/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/MyBlog/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/MyBlog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/MyBlog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/MyBlog/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/MyBlog/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/MyBlog/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/MyBlog/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/MyBlog/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/MyBlog/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
