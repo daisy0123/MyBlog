@@ -6,7 +6,7 @@
   <link href="/MyBlog/atom.xml" rel="self"/>
   
   <link href="https://qiuyuxiu.github.io/MyBlog/"/>
-  <updated>2018-06-08T11:23:59.996Z</updated>
+  <updated>2018-06-08T11:23:49.064Z</updated>
   <id>https://qiuyuxiu.github.io/MyBlog/</id>
   
   <author>
@@ -15,20 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>JavaScript 基本包装方法</title>
-    <link href="https://qiuyuxiu.github.io/MyBlog/2018/06/08/JavaScript-%E5%9F%BA%E6%9C%AC%E5%8C%85%E8%A3%85%E6%96%B9%E6%B3%95/"/>
-    <id>https://qiuyuxiu.github.io/MyBlog/2018/06/08/JavaScript-基本包装方法/</id>
-    <published>2018-06-08T11:23:59.000Z</published>
-    <updated>2018-06-08T11:23:59.996Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
   
   <entry>
     <title>JavaScript 面向对象</title>
@@ -288,6 +274,20 @@
     <id>https://qiuyuxiu.github.io/MyBlog/2018/06/08/http三个版本/</id>
     <published>2018-06-08T08:52:34.000Z</published>
     <updated>2018-06-08T08:52:34.088Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>长连接&amp;短连接&amp;长轮询&amp;短轮询</title>
+    <link href="https://qiuyuxiu.github.io/MyBlog/2018/06/08/%E9%95%BF%E8%BF%9E%E6%8E%A5-%E7%9F%AD%E8%BF%9E%E6%8E%A5-%E9%95%BF%E8%BD%AE%E8%AF%A2-%E7%9F%AD%E8%BD%AE%E8%AF%A2/"/>
+    <id>https://qiuyuxiu.github.io/MyBlog/2018/06/08/长连接-短连接-长轮询-短轮询/</id>
+    <published>2018-06-08T08:52:19.000Z</published>
+    <updated>2018-06-08T08:52:19.904Z</updated>
     
     <summary type="html">
     
