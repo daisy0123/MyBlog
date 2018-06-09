@@ -6,7 +6,7 @@
   <link href="/MyBlog/atom.xml" rel="self"/>
   
   <link href="https://qiuyuxiu.github.io/MyBlog/"/>
-  <updated>2018-06-08T11:23:27.571Z</updated>
+  <updated>2018-06-08T11:23:11.533Z</updated>
   <id>https://qiuyuxiu.github.io/MyBlog/</id>
   
   <author>
@@ -15,20 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>JavaScript Function类型</title>
-    <link href="https://qiuyuxiu.github.io/MyBlog/2018/06/08/JavaScript-Function%E7%B1%BB%E5%9E%8B/"/>
-    <id>https://qiuyuxiu.github.io/MyBlog/2018/06/08/JavaScript-Function类型/</id>
-    <published>2018-06-08T11:23:27.000Z</published>
-    <updated>2018-06-08T11:23:27.571Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
   
   <entry>
     <title>JavaScript闭包问题</title>
@@ -265,6 +251,33 @@
     
     </summary>
     
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScript Function类型</title>
+    <link href="https://qiuyuxiu.github.io/MyBlog/2017/06/17/JavaScript-Function%E7%B1%BB%E5%9E%8B/"/>
+    <id>https://qiuyuxiu.github.io/MyBlog/2017/06/17/JavaScript-Function类型/</id>
+    <published>2017-06-17T03:43:27.000Z</published>
+    <updated>2018-06-09T07:17:21.949Z</updated>
+    
+    <content type="html"><![CDATA[<p>作为值的函数：不仅可以像传递参数一样传递给另一个函数，而且可以将一个函数作为另一个函数的结果返回。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function callSomeFunction(someFunction,someArgument)&#123;</span><br><span class="line">    return someFunction(someArgument);</span><br><span class="line">&#125;</span><br><span class="line">function add10(num)&#123;</span><br><span class="line">    return num+10;</span><br><span class="line">&#125;</span><br><span class="line">var result=callSomeFunction(add10,10);</span><br><span class="line">document.write(result);//20</span><br><span class="line">function getGreeting(name)&#123;</span><br><span class="line">    return &quot;hello, &quot;+name;</span><br><span class="line">&#125;</span><br><span class="line">var result2=callSomeFunction(getGreeting,&quot;Nike&quot;);</span><br><span class="line">document.write(result2);//hello, Nike</span><br></pre></td></tr></table></figure></p><p>sort()方法用到这种从一个函数返回另一个函数的方法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">function createComparisonFunction(propertuName)&#123;</span><br><span class="line">    return function(object1,object2)&#123;</span><br><span class="line">        var value1=object1[propertuName];</span><br><span class="line">        var value2=object2[propertuName];</span><br><span class="line">        if(value1&lt;value2)&#123;</span><br><span class="line">            return -1;</span><br><span class="line">        &#125;else if(value1&gt;value2)&#123;</span><br><span class="line">            return 1;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            return 0;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line">var data=[&#123;name:&quot;Zachary&quot;,age:28&#125;,&#123;name:&quot;Nick&quot;,age:29&#125;];</span><br><span class="line">data.sort(createComparisonFunction(&quot;name&quot;));</span><br><span class="line">document.write(data[0].name);//Nick</span><br><span class="line">data.sort(createComparisonFunction(&quot;age&quot;));</span><br><span class="line">document.write(data[0].name);//Zachary</span><br></pre></td></tr></table></figure></p><p>函数内部属性：arguments 和 this<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">function factorial(num)&#123;</span><br><span class="line">    if(num&lt;=1)&#123;</span><br><span class="line">        return 1;</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        return num*factorial(num-1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">var result=factorial(9);</span><br><span class="line">alert(result);</span><br><span class="line">function factorial(num)&#123;</span><br><span class="line">    if(num&lt;=1)&#123;</span><br><span class="line">        return 1;</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        return num*arguments.callee(num-1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">var result=factorial(9);</span><br><span class="line">alert(result);</span><br></pre></td></tr></table></figure></p><p>这两个函数执行的结果一样，都为362880。<br>函数属性和方法：<br>每个函数都包含两个属性：length和prototype<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function sayName(name)&#123;</span><br><span class="line">    alert(name);</span><br><span class="line">&#125;</span><br><span class="line">function sum(num1,num2)&#123;</span><br><span class="line">    return num1+num2;</span><br><span class="line">&#125;</span><br><span class="line">function sayHi()&#123;</span><br><span class="line">    alert(&quot;hi&quot;);</span><br><span class="line">&#125;</span><br><span class="line">alert(sayName.length);//1</span><br><span class="line">alert(sum.length);//2</span><br><span class="line">alert(sayHi.length);//0</span><br></pre></td></tr></table></figure></p><p>每个函数包含两个非继承而来的方法apply()和call()。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function sum(num1,num2)&#123;</span><br><span class="line">    return num1+num2;</span><br><span class="line">&#125;</span><br><span class="line">function callSum1(num1,num2)&#123;</span><br><span class="line">    return sum.apply(this,arguments);</span><br><span class="line">&#125;</span><br><span class="line">function callSum2(num1,num2)&#123;</span><br><span class="line">    return sum.apply(this,[num1,num2]);</span><br><span class="line">&#125;</span><br><span class="line">alert(callSum1(10,10));//20</span><br><span class="line">alert(callSum2(10,10));//20</span><br></pre></td></tr></table></figure></p><p>call() 方法第二个参数是其余参数直接传递给函数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function sum(num1,num2)&#123;</span><br><span class="line">    return num1+num2;</span><br><span class="line">&#125;</span><br><span class="line">function callSum(num1,num2)&#123;</span><br><span class="line">    return sum.call(this,num1,num2);</span><br><span class="line">&#125;</span><br><span class="line">alert(callSum(10,10));//20</span><br></pre></td></tr></table></figure></p><p>在讨论javascript的继承中也用到了call()方法。</p><p>bind() 方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">window.color=&quot;red&quot;;</span><br><span class="line">var o=&#123;color:&quot;blue&quot;&#125;;</span><br><span class="line">function sayColor()&#123;</span><br><span class="line">    alert(this.color);</span><br><span class="line">&#125;</span><br><span class="line">var objectSayColor=sayColor.bind(o);</span><br><span class="line">objectSayColor();//blue</span><br></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;作为值的函数：不仅可以像传递参数一样传递给另一个函数，而且可以将一个函数作为另一个函数的结果返回。&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line
+      
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="https://qiuyuxiu.github.io/MyBlog/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript" scheme="https://qiuyuxiu.github.io/MyBlog/tags/JavaScript/"/>
+    
+      <category term="Function类型" scheme="https://qiuyuxiu.github.io/MyBlog/tags/Function%E7%B1%BB%E5%9E%8B/"/>
     
   </entry>
   
