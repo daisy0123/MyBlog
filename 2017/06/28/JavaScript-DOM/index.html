@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/MyBlog/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/MyBlog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/MyBlog/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/MyBlog/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/MyBlog/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/MyBlog/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/MyBlog/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JavaScript,DOM," />
+
+
+
+
+
+  <link rel="alternate" href="/MyBlog/atom.xml" title="个人博客" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="Node类型1.nodeType属性：为了确保跨浏览器兼容，最好要将这个属性与数字值进行比较：123if(someNode.nodeType==1)&amp;#123;    alert(&amp;quot;Node is an element!&amp;quot;);&amp;#125; 2.nodeName和nodeValue属性：最好先判断是不是一个元素，再来取得并保存nodeName的值。nodeName中保存的始终是元">
+<meta name="keywords" content="JavaScript,DOM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript DOM">
+<meta property="og:url" content="https://qiuyuxiu.github.io/MyBlog/2017/06/28/JavaScript-DOM/index.html">
+<meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="Node类型1.nodeType属性：为了确保跨浏览器兼容，最好要将这个属性与数字值进行比较：123if(someNode.nodeType==1)&amp;#123;    alert(&amp;quot;Node is an element!&amp;quot;);&amp;#125; 2.nodeName和nodeValue属性：最好先判断是不是一个元素，再来取得并保存nodeName的值。nodeName中保存的始终是元">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-06-09T07:39:55.982Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript DOM">
+<meta name="twitter:description" content="Node类型1.nodeType属性：为了确保跨浏览器兼容，最好要将这个属性与数字值进行比较：123if(someNode.nodeType==1)&amp;#123;    alert(&amp;quot;Node is an element!&amp;quot;);&amp;#125; 2.nodeName和nodeValue属性：最好先判断是不是一个元素，再来取得并保存nodeName的值。nodeName中保存的始终是元">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/MyBlog/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://qiuyuxiu.github.io/MyBlog/2017/06/28/JavaScript-DOM/"/>
+
+
+
+
+
+  <title>JavaScript DOM | 个人博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/MyBlog/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">有关于前端学习的个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/MyBlog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/MyBlog/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/MyBlog/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/MyBlog/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://qiuyuxiu.github.io/MyBlog/MyBlog/2017/06/28/JavaScript-DOM/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Daisy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/MyBlog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JavaScript DOM</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-28T15:22:49+08:00">
+                2017-06-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/MyBlog/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Node类型"><a href="#Node类型" class="headerlink" title="Node类型"></a>Node类型</h2><p>1.nodeType属性：为了确保跨浏览器兼容，最好要将这个属性与数字值进行比较：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if(someNode.nodeType==1)&#123;</span><br><span class="line">    alert(&quot;Node is an element!&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>2.nodeName和nodeValue属性：<br>最好先判断是不是一个元素，再来取得并保存nodeName的值。nodeName中保存的始终是元素的标签名。</p>
+<p>3.childNodes属性：有着NodeList对象，是一种类数组对象。子节点可以用方括号和item()方法来访问。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var firstChild=someNode.childNodes[0];</span><br><span class="line">var secondChild=someNode.childNodes.item(1);</span><br><span class="line">var count=someNode.childNodes.length;</span><br></pre></td></tr></table></figure></p>
+<p>要将NodeList转换为数组，必须手动枚举所有成员：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function convertToArray(nodes)&#123;</span><br><span class="line">    var array=null;</span><br><span class="line">    try&#123;</span><br><span class="line">        array=Array.prototype.slice.call(nodes,0);//针对非ie浏览器</span><br><span class="line">    &#125;catch(ex)&#123;</span><br><span class="line">        array=new Array();</span><br><span class="line">        for(var i=0,len=nodes.length;i&lt;len;i++)&#123;</span><br><span class="line">            array.push(nodes[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return array;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>parentNode属性：父节点<br>previousSibling属性和nextSibling属性：访问同一列表中的其他节点。同胞节点。<br>firstChild和lastChild属性：第一个节点和最后一个节点。<br>hasChildNodes()属性：在节点包含一或多个子节点的情况下返回true。</p>
+<p>操作节点：<br>appendChild()方法：用于向childNodes列表的末尾添加一个节点。<br>insertBefore()方法：接受两个参数：要插入的节点和作为参照的节点。如果参照节点为null，则insertBefore()与appendChild()执行相同的操作。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">//插入后成为最后一个子节点</span><br><span class="line">returnedNode=someNode.insertBefore(newNode,null);</span><br><span class="line">alert(newValue==someNode.lastChild);//true</span><br><span class="line">//插入后成为第一个子节点</span><br><span class="line">var returnedNode=someNode.insertBefore(newNode,someNode.firstChild);</span><br><span class="line">alert(returnedNode==newValue);//true</span><br><span class="line">alert(newValue==someNode.firstChild);//true</span><br><span class="line">//插入后成为最后一个子节点之前</span><br><span class="line">returnedNode=someNode.insertBefore(newNode,someNode.lastChild);</span><br><span class="line">alert(newValue==someNode.childNodes[someNode.childNodes.length-2]);//true</span><br><span class="line">replaceChild() 方法：接受两个参数：要插入的节点和要替换的节点。</span><br><span class="line"></span><br><span class="line">//替换第一个节点</span><br><span class="line">var returnedNode=someNode.replaceChild(newNode,someNode.firstChild);</span><br><span class="line">//替换最后一个节点</span><br><span class="line">returnedNode=someNode.replaceChild(newNode,someNode.lastChild);</span><br><span class="line">removeChild()方法：接受一个参数：即要移除的节点。</span><br><span class="line"></span><br><span class="line">//移除第一个节点</span><br><span class="line">var returnedNode=someNode.removeChild(someNode.firstChild);</span><br><span class="line">//移除最后一个节点</span><br><span class="line">returnedNode=someNode.removeChild(someNode.lastChild);</span><br><span class="line">cloneNode()方法接受一个布尔值参数，用于创建调用这个方法的 节点的一个完全相同的副本。</span><br></pre></td></tr></table></figure></p>
+<h2 id="Document类型"><a href="#Document类型" class="headerlink" title="Document类型"></a>Document类型</h2><p>documentElement属性始终指向HTML页面中的元素。<br>body属性直接指向元素。<br>所有浏览器都支持document.documentElement和document.body属性。<br>Document对象还有title属性，URL属性，domain属性和referrer属性。<br>查找元素：getElementById() 和getElementsByTagName()，前者接受元素的id，后者接受元素的标签名。<br>getElementsByName() 这个方法返回带有给定name特性的所有元素。</p>
+<h2 id="Element类型"><a href="#Element类型" class="headerlink" title="Element类型"></a>Element类型</h2><p>在HTML中，标签名始终都以全部大写表示。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if(element.tagName.toLowerCase()==&quot;div&quot;)&#123;</span><br><span class="line">    //在此执行某些操作</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>取得特性：<br>getAttribute()：获取相应的特性值。getAttribute(“id”);<br>setAttribute()：设置相应的特性值。setAttribute(“id”,”oDiv”);<br>removeAttribute()：移除相应的特性值。removeAttribute(“id”);<br>attributes属性：element.attributes.getNameItem()；element.attributes[“ “]。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var btn=document.getElementsByTagName(&quot;button&quot;)[0];</span><br><span class="line">var id=btn.attributes.getNamedItem(&quot;id&quot;).nodeValue;</span><br><span class="line">alert(id);</span><br></pre></td></tr></table></figure></p>
+<p>一般来说，这个属性的方法不太方便，一般都是选用getAttribute()、setAttribute()、removeAttribute()。<br>不过在遍历元素的特性时可以用上attributes属性的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">function outputAttributes(element)&#123;</span><br><span class="line">    var pairs=new Array(),</span><br><span class="line">        attrName,</span><br><span class="line">        attrValue,</span><br><span class="line">        i,</span><br><span class="line">        len;</span><br><span class="line">    for(i=0,len=element.attributes.length;i&lt;len;i++)&#123;</span><br><span class="line">        attrName=element.attributes[i].nodeName;</span><br><span class="line">        attrValue=element.attributes[i].nodeValue;</span><br><span class="line">        pairs.push(attrName+&quot;=\&quot;&quot;+attrValue+&quot;\&quot;&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">   return pairs.join(&quot;  &quot;);</span><br><span class="line">&#125;</span><br><span class="line">function outputAttributes(element)&#123;</span><br><span class="line">    var pairs=new Array(),</span><br><span class="line">        attrName,</span><br><span class="line">        attrValue,</span><br><span class="line">        i,</span><br><span class="line">        len;</span><br><span class="line">    for(i=0,len=element.attributes.length;i&lt;len;i++)&#123;</span><br><span class="line">        attrName=element.attributes[i].nodeName;</span><br><span class="line">        attrValue=element.attributes[i].nodeValue;</span><br><span class="line">        if(element.attributes[i].specified)&#123;</span><br><span class="line">            pairs.push(attrName+&quot;=\&quot;&quot;+attrValue+&quot;\&quot;&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">   return pairs.join(&quot;  &quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>创建元素：<br>document.createElement()方法可以创建新元素。接受一个参数：即要创建元素的标签名。<br>创建之后可以使用appendChild(),insertBefore(),replaceChild()方法进行添加到文档树中。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var div=document.createElement(&quot;div&quot;);</span><br><span class="line">div.className=&quot;oDiv&quot;;</span><br><span class="line">div.id=&quot;oDiv&quot;;</span><br><span class="line">document.body.appendChild(div);</span><br></pre></td></tr></table></figure></p>
+<h2 id="Text类型"><a href="#Text类型" class="headerlink" title="Text类型"></a>Text类型</h2><p>创建文本节点：document.createTextNode()，接受一个参数：要插入节点中的文本。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var div=document.createElement(&quot;div&quot;);</span><br><span class="line">div.className=&quot;oDiv&quot;;</span><br><span class="line">div.id=&quot;oDiv&quot;;</span><br><span class="line">var textNode=document.createTextNode(&quot;hello world!&quot;);</span><br><span class="line">div.appendChild(textNode);</span><br><span class="line">document.body.appendChild(div);</span><br></pre></td></tr></table></figure></p>
+<p>当多个文本节点的时候可以使用normalize()方法来规范化。<br>分割文本节点：splitText()，按照指定的位置进行分割文本节点的nodeValue值。</p>
+<h2 id="Attr类型"><a href="#Attr类型" class="headerlink" title="Attr类型"></a>Attr类型</h2><p>有3个属性：name,value,specified<br>document.createAttribute()传入特性的名称可以创建新的特性节点。之后必须使用setAttributeNode()进行添加。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var attribute=document.createAttribute(&quot;align&quot;);</span><br><span class="line">attribute.value=&quot;left&quot;;</span><br><span class="line">element.setAttributeNode(attribute);</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/MyBlog/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+            <a href="/MyBlog/tags/DOM/" rel="tag"># DOM</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/MyBlog/2017/06/20/JavaScript-BOM/" rel="next" title="JavaScript BOM">
+                <i class="fa fa-chevron-left"></i> JavaScript BOM
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/MyBlog/2018/06/08/长连接-短连接-长轮询-短轮询/" rel="prev" title="长连接&短连接&长轮询&短轮询">
+                长连接&短连接&长轮询&短轮询 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Daisy</p>
+              <p class="site-description motion-element" itemprop="description">前端技术个人博客</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/MyBlog/archives/">
+              
+                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/MyBlog/categories/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/MyBlog/tags/index.html">
+                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/MyBlog/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Node类型"><span class="nav-number">1.</span> <span class="nav-text">Node类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Document类型"><span class="nav-number">2.</span> <span class="nav-text">Document类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Element类型"><span class="nav-number">3.</span> <span class="nav-text">Element类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Text类型"><span class="nav-number">4.</span> <span class="nav-text">Text类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Attr类型"><span class="nav-number">5.</span> <span class="nav-text">Attr类型</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Daisy</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/MyBlog/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/MyBlog/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/MyBlog/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/MyBlog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/MyBlog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/MyBlog/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/MyBlog/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/MyBlog/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/MyBlog/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/MyBlog/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/MyBlog/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
