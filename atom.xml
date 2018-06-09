@@ -6,7 +6,7 @@
   <link href="/MyBlog/atom.xml" rel="self"/>
   
   <link href="https://qiuyuxiu.github.io/MyBlog/"/>
-  <updated>2018-06-08T11:23:49.064Z</updated>
+  <updated>2018-06-08T11:23:36.191Z</updated>
   <id>https://qiuyuxiu.github.io/MyBlog/</id>
   
   <author>
@@ -15,20 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>JavaScript 面向对象</title>
-    <link href="https://qiuyuxiu.github.io/MyBlog/2018/06/08/JavaScript-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
-    <id>https://qiuyuxiu.github.io/MyBlog/2018/06/08/JavaScript-面向对象/</id>
-    <published>2018-06-08T11:23:49.000Z</published>
-    <updated>2018-06-08T11:23:49.064Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
   
   <entry>
     <title>JavaScript 继承</title>
@@ -293,6 +279,33 @@
     
     </summary>
     
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScript 面向对象</title>
+    <link href="https://qiuyuxiu.github.io/MyBlog/2017/06/17/JavaScript-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
+    <id>https://qiuyuxiu.github.io/MyBlog/2017/06/17/JavaScript-面向对象/</id>
+    <published>2017-06-17T01:23:49.000Z</published>
+    <updated>2018-06-09T07:07:44.779Z</updated>
+    
+    <content type="html"><![CDATA[<p>属性类型<br>要修改对象的属性的默认的特性，必须使用Object.defineProperty() 方法。这个方法接受三个参数：属性所在的对象，属性的名字，一个描述符对象。描述符对象的属性必须是configurable,enumberable,writable,value。在不指定情况下，configurable,enumberable,writable这三个属性都是默认为false。<br>configurable设置为false 表示不能从对象中删除属性。writable设置为false表示是只读的，不能对属性进行赋值。enumberable表示能否通过for-in循环返回属性。</p><p>访问器属性<br>在读取访问器属性时，会调用getter函数；在写入访问器属性时，会调用setter函数并传入新值。<br>访问器属性不能直接定义，必须使用Object.defineProperty()来定义。</p><p>var book={<br>    _year:2004,<br>    edition:1<br>};<br>Object.defineProperty(book,”year”,{<br>    get:function(){<br>        return this._year;<br>    },<br>    set:function(newValue){<br>        if(newValue&gt;2004){<br>            this._year=newValue;<br>            this.edition+=newValue-2004;<br>        }<br>    }<br>});<br>book.year=2005;<br>alert(book.edition);//2<br>定义多个属性：Object.defineProperties()方法。<br>读取属性的特征：Object.getOwnPropertyDescriptor()方法。</p><p>var book={<br>};<br>Object.defineProperties(book,{<br>    _year:{<br>        value:2004,<br>        writable: true//这个必须写，不然不能下面book.year没有启用而起作用弹出2007，不然就弹出2004<br>    },<br>    edition:{<br>        value:1<br>    },<br>    year:{<br>        get:function(){<br>            return this._year;<br>        },<br>        set:function(newValue){<br>            if(newValue&gt;2004){<br>                this._year=newValue;<br>                this.edition+=newValue-2004;<br>            }<br>        },<br>    }<br>});<br>var descriptor=Object.getOwnPropertyDescriptor(book,”_year”);<br>alert(descriptor.value);//2004<br>alert(descriptor.configurable);//false<br>book.year=2007;<br>alert(book._year);//2007<br>创建对象<br>1.工厂模式：</p><p>function createPerson(name,age,job){<br>    var o=new Object();<br>    o.name=name;<br>    o.age=age;<br>    o.job=job;<br>    o.sayName=function(){<br>        alert(this.name);<br>    };<br>    return o;<br>}<br>var person1=createPerson(“Nick”,29,”Engineer”);<br>var person2=createPerson(“Greg”,27,”Doctor”);<br>person1.sayName();//Nick<br>alert(person2.name);//Greg<br>2.构造函数模式:</p><p>function Person(name,age,job){<br>    this.name=name;<br>    this.age=age;<br>    this.job=job;<br>    this.sayName=function(){<br>        alert(this.name);<br>    }<br>}<br>var person1=new Person(“Nick”,29,”Engineer”);<br>var person2=new Person(“Greg”,27,”Doctor”);<br>person1.sayName();//Nick<br>alert(person2.name);//Greg<br>3.原型模式</p><p>function Person(){<br>}<br>Person.prototype.name=”Nike”;<br>Person.prototype.age=29;<br>Person.prototype.job=”Engineer”;<br>Person.prototype.sayName=function(){<br>    alert(this.name);<br>};<br>var person1=new Person();<br>person1.sayName();//Nike<br>var person2=new Person();<br>person2.sayName();//Nike<br>alert(person1.sayName==person2.sayName);//true<br>hasOwnProperty() 方法可以检测一个属性是否存在于实例中，还是存在于原型中。如果存在于对象实例中，则返回true。<br>hasPrototypeProperty() 方法可以检测一个属性是否存在于实例中，还是存在于原型中。如果存在于对象原型中，则返回true。<br>Object.keys() 方法接受一个对象作为参数，返回一个包含所有可枚举属性的字符串数组。</p><p>更简单的原型语法：</p><p>function Person(){<br>}<br>Person.prototype={<br>  name: “Nike”,<br>  age: 29,<br>  job: “Engineer”,<br>  sayName: function(){<br>    alert(this.name);<br>  }<br>};<br>原型对象的问题：</p><p>function Person(){<br>}<br>Person.prototype={<br>  constructor: Person,<br>  name: “Nike”,<br>  job: “Engineer”,<br>  friends: [“Shelby”,”Court”],<br>  sayName: function(){<br>    alert(this.name);<br>  }<br>};<br>var person1=new Person();<br>var person2=new Person();<br>person1.friends.push(“Van”);<br>alert(person1.friends);//Shelby,Court,Van<br>alert(person2.friends);//Shelby,Court,Van<br>alert(person1.friends==person2.friends);//true<br>可以看到当改变一个对象的friends时，其他的对象的friends也跟着改变friends数组存在于person.prototype中，而不是存在于person1中，所以当改变person1的friends时候，person2的friends也变化。<br>4.组合使用构造函数模式和原型模式：构造函数模式用于定义实例属性，而原型模式用于定义方法和共享的属性。<br><code>`</code>js<br>function Person(name,age,job){<br>  this.name=name;<br>  this.age=age;<br>  this.job=job;<br>  this.friends=[“Shelby”,”Court”];<br>}<br>Person.prototype={<br>  constructor: Person,<br>  sayName: function(){<br>    alert(this.name);<br>  }<br>}<br>var person1=new Person(“Nike”,29,”Engineer”);<br>var person2=new Person(“Greg”,27,”Doctor”);<br>person1.friends.push(“Van”);<br>alert(person1.friends);//Shelby,Court,Van<br>alert(person2.friends);//Shelby,Court<br>alert(person1.friends==person2.friends);//false<br>alert(person1.sayName==person2.sayName);//true<br>5.动态原型模式<br>可以通过检查某个应该存在的方法是否有效，来决定是否需要初始化原型。</p><p>function Person(name, age, job) {<br>    this.name = name;<br>    this.age = age;<br>    this.job = job;<br>    if(typeof this.sayName != “function”) { //在sayName()方法不存在的情况下，才会将它添加到原型中。instanceof操作符也可以<br>        Person.prototype.sayName = function() {<br>            alert(this.name);<br>        };<br>    }<br>}<br>var friend = new Person(“Nike”, 29, “Engineer”);<br>friend.sayName();//Nike</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;属性类型&lt;br&gt;要修改对象的属性的默认的特性，必须使用Object.defineProperty() 方法。这个方法接受三个参数：属性所在的对象，属性的名字，一个描述符对象。描述符对象的属性必须是configurable,enumberable,writable,value
+      
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="https://qiuyuxiu.github.io/MyBlog/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript" scheme="https://qiuyuxiu.github.io/MyBlog/tags/JavaScript/"/>
+    
+      <category term="面向对象" scheme="https://qiuyuxiu.github.io/MyBlog/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
     
   </entry>
   
