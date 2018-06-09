@@ -6,7 +6,7 @@
   <link href="/MyBlog/atom.xml" rel="self"/>
   
   <link href="https://qiuyuxiu.github.io/MyBlog/"/>
-  <updated>2018-06-08T11:24:37.629Z</updated>
+  <updated>2018-06-08T11:24:28.581Z</updated>
   <id>https://qiuyuxiu.github.io/MyBlog/</id>
   
   <author>
@@ -15,20 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>JavaScript 数据类型</title>
-    <link href="https://qiuyuxiu.github.io/MyBlog/2018/06/08/JavaScript-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/"/>
-    <id>https://qiuyuxiu.github.io/MyBlog/2018/06/08/JavaScript-数据类型/</id>
-    <published>2018-06-08T11:24:37.000Z</published>
-    <updated>2018-06-08T11:24:37.629Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
   
   <entry>
     <title>JavaScript 执行环境及作用域</title>
@@ -288,6 +274,20 @@
     <id>https://qiuyuxiu.github.io/MyBlog/2018/06/08/内存泄漏问题/</id>
     <published>2018-06-08T08:53:07.000Z</published>
     <updated>2018-06-08T08:53:07.783Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>手写promise</title>
+    <link href="https://qiuyuxiu.github.io/MyBlog/2018/06/08/%E6%89%8B%E5%86%99promise/"/>
+    <id>https://qiuyuxiu.github.io/MyBlog/2018/06/08/手写promise/</id>
+    <published>2018-06-08T08:52:57.000Z</published>
+    <updated>2018-06-08T08:52:58.018Z</updated>
     
     <summary type="html">
     
