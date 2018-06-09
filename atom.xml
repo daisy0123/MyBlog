@@ -6,7 +6,7 @@
   <link href="/MyBlog/atom.xml" rel="self"/>
   
   <link href="https://qiuyuxiu.github.io/MyBlog/"/>
-  <updated>2018-06-08T08:52:46.608Z</updated>
+  <updated>2018-06-09T15:37:45.440Z</updated>
   <id>https://qiuyuxiu.github.io/MyBlog/</id>
   
   <author>
@@ -17,30 +17,27 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>JSONP</title>
-    <link href="https://qiuyuxiu.github.io/MyBlog/2018/06/08/JSONP/"/>
-    <id>https://qiuyuxiu.github.io/MyBlog/2018/06/08/JSONP/</id>
-    <published>2018-06-08T08:52:46.000Z</published>
-    <updated>2018-06-08T08:52:46.608Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
     <title>http三个版本</title>
     <link href="https://qiuyuxiu.github.io/MyBlog/2018/06/08/http%E4%B8%89%E4%B8%AA%E7%89%88%E6%9C%AC/"/>
     <id>https://qiuyuxiu.github.io/MyBlog/2018/06/08/http三个版本/</id>
     <published>2018-06-08T08:52:34.000Z</published>
-    <updated>2018-06-08T08:52:34.088Z</updated>
+    <updated>2018-06-09T15:37:45.440Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="HTTP1-0-amp-HTTP1-1"><a href="#HTTP1-0-amp-HTTP1-1" class="headerlink" title="HTTP1.0 &amp; HTTP1.1"></a>HTTP1.0 &amp; HTTP1.1</h2><p>1.长连接<br>HTTP 1.0需要使用keep-alive参数来告知服务器端要建立一个长连接，而HTTP1.1默认支持长连接,参数为keep-alive。<br>HTTP是基于TCP/IP协议的，创建一个TCP连接是需要经过三次握手的,有一定的开销，如果每次通讯都要重新建立连接的话，对性能有影响。因此最好能维持一个长连接，可以用个长连接来发多个请求。</p><p>2.节约带宽<br>HTTP 1.1支持只发送header信息(不带任何body信息)，如果服务器认为客户端有权限请求服务器，则返回100，否则返回401(无权限)。客户端如果接受到100，才开始把请求body发送到服务器。<br>这样当服务器返回401的时候，客户端就可以不用发送请求body了，节约了带宽。<br>另外HTTP还支持传送内容的一部分,这样当客户端已经有一部分的资源后，只需要跟服务器请求另外的部分资源即可,这是支持文件断点续传的基础。</p><p>3.HOST域<br>HTTP1.0是没有host域的，HTTP1.1才支持这个参数。</p><h2 id="HTTP1-1-HTTP-2-0主要区别"><a href="#HTTP1-1-HTTP-2-0主要区别" class="headerlink" title="HTTP1.1 HTTP 2.0主要区别"></a>HTTP1.1 HTTP 2.0主要区别</h2><p>1.多路复用<br>多路复用允许同时通过单一的 HTTP/2 连接发起多重的请求-响应消息。<br>HTTP2.0使用了多路复用的技术，做到同一个连接并发处理多个请求，而且并发请求的数量比HTTP1.1大了好几个数量级。<br>当然HTTP1.1也可以多建立几个TCP连接，来支持处理更多并发的请求，但是创建TCP连接本身也是有开销的。<br>TCP连接有一个预热和保护的过程，先检查数据是否传送成功，一旦成功过，则慢慢加大传输速度。因此对应瞬时并发的连接，服务器的响应就会变慢。所以最好能使用一个建立好的连接，并且这个连接可以支持瞬时并发的请求</p><p>2.数据压缩<br>HTTP1.1不支持header数据的压缩，HTTP2.0使用HPACK算法对header的数据进行压缩，这样数据体积小了，在网络上传输就会更快。</p><p>3.服务器推送<br>当我们对支持HTTP2.0的web server请求数据的时候，服务器会顺便把一些客户端需要的资源一起推送到客户端，免得客户端再次创建连接发送请求到服务器端获取。这种方式非常合适加载静态资源。<br>服务器端推送的这些资源其实存在客户端的某处地方，客户端直接从本地加载这些资源就可以了，不用走网络，速度自然是快很多的。</p><p>4.加载速度很快</p>]]></content>
     
     <summary type="html">
     
+      
+      
+        &lt;h2 id=&quot;HTTP1-0-amp-HTTP1-1&quot;&gt;&lt;a href=&quot;#HTTP1-0-amp-HTTP1-1&quot; class=&quot;headerlink&quot; title=&quot;HTTP1.0 &amp;amp; HTTP1.1&quot;&gt;&lt;/a&gt;HTTP1.0 &amp;amp; HTTP1.1&lt;/h2&gt;&lt;
+      
+    
     </summary>
     
+      <category term="HTTP" scheme="https://qiuyuxiu.github.io/MyBlog/categories/HTTP/"/>
+    
+    
+      <category term="HTTP" scheme="https://qiuyuxiu.github.io/MyBlog/tags/HTTP/"/>
     
   </entry>
   
@@ -55,6 +52,31 @@
     
     </summary>
     
+    
+  </entry>
+  
+  <entry>
+    <title>JSONP</title>
+    <link href="https://qiuyuxiu.github.io/MyBlog/2018/05/08/JSONP/"/>
+    <id>https://qiuyuxiu.github.io/MyBlog/2018/05/08/JSONP/</id>
+    <published>2018-05-08T08:52:46.000Z</published>
+    <updated>2018-06-09T15:36:34.366Z</updated>
+    
+    <content type="html"><![CDATA[<p>手写Jsonp，Jsonp是跨域请求的一种常用的方式。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">(function (window,document) &#123;</span><br><span class="line">  &apos;use strict&apos;;</span><br><span class="line">  var jsonp = function(url,data,callback)&#123;</span><br><span class="line">    //1 挂载回调函数</span><br><span class="line">    var fnSuffix = Math.random().toString().replace(&apos;.&apos;,&apos;&apos;);</span><br><span class="line">    var cbFuncName = &apos;my_json_cd_&apos; + fnSuffix;</span><br><span class="line">    //将函数挂载在全局环境的方式不推荐  使用cbs.my_json_cb_</span><br><span class="line">    window[cbFuncName] = callback;</span><br><span class="line">    //2 将data转化成url字符串的形式</span><br><span class="line">    var querystring = url.indexOf(&apos;?&apos;)==-1?&apos;?&apos;:&apos;&amp;&apos;;</span><br><span class="line">    for(var key in data)&#123;</span><br><span class="line">      querystring += key + &apos;=&apos; +data[key]+&apos;&amp;&apos;;</span><br><span class="line">    &#125;</span><br><span class="line">    //3 处理url地址中的回调参数</span><br><span class="line">    querystring += &apos;callback=&apos; + cbFuncName;</span><br><span class="line">    //4 创建一个script的标签</span><br><span class="line">    var scriptElement = document.createElement(&apos;script&apos;);</span><br><span class="line">    scriptElement.src = url + querystring;</span><br><span class="line">    //5 将script标签放到页面中</span><br><span class="line">    document.body.appendChild(scriptElement);</span><br><span class="line">  &#125;;</span><br><span class="line">  window.$jsonp = jsonp;</span><br><span class="line">&#125;)(window,document);</span><br><span class="line">//实现</span><br><span class="line">// (function()&#123;</span><br><span class="line">//   $jsonp(//地址</span><br><span class="line">//     &apos;http://api.douban.com/v2/movie/in_theaters&apos;,</span><br><span class="line">//     //传递的参数</span><br><span class="line">//     &#123;</span><br><span class="line">//       count:10,start:5</span><br><span class="line">//     &#125;,</span><br><span class="line">//     //回调函数</span><br><span class="line">//     function(data)&#123;</span><br><span class="line">//       document.getElementById(&apos;result&apos;).innerHTML=JSON.stringify(data);</span><br><span class="line">//     &#125;</span><br><span class="line">//   );</span><br><span class="line">// &#125;)();</span><br></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;手写Jsonp，Jsonp是跨域请求的一种常用的方式。&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span cl
+      
+    
+    </summary>
+    
+      <category term="JSONP" scheme="https://qiuyuxiu.github.io/MyBlog/categories/JSONP/"/>
+    
+    
+      <category term="JSONP" scheme="https://qiuyuxiu.github.io/MyBlog/tags/JSONP/"/>
     
   </entry>
   
