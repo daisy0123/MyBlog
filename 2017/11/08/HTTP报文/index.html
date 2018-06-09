@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/MyBlog/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/MyBlog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/MyBlog/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/MyBlog/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/MyBlog/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/MyBlog/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/MyBlog/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="HTTP,报文," />
+
+
+
+
+
+  <link rel="alternate" href="/MyBlog/atom.xml" title="个人博客" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="报文的组成部分报文由三个部分组成：对报文进行描述的起始行，包含属性的首部块，以及可选的、包含数据的主体部分。报文的语法:所有的报文分为两类：请求报文，响应报文。 请求报文一个HTTP请求报文由请求行（request line）、请求头部（header）、空行和请求数据4个部分组成格式：1234&amp;lt;method&amp;gt;&amp;lt;request-URL&amp;gt;&amp;lt;version&amp;gt;&amp;lt;h">
+<meta name="keywords" content="HTTP,报文">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTTP报文">
+<meta property="og:url" content="https://qiuyuxiu.github.io/MyBlog/2017/11/08/HTTP报文/index.html">
+<meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="报文的组成部分报文由三个部分组成：对报文进行描述的起始行，包含属性的首部块，以及可选的、包含数据的主体部分。报文的语法:所有的报文分为两类：请求报文，响应报文。 请求报文一个HTTP请求报文由请求行（request line）、请求头部（header）、空行和请求数据4个部分组成格式：1234&amp;lt;method&amp;gt;&amp;lt;request-URL&amp;gt;&amp;lt;version&amp;gt;&amp;lt;h">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://qiuyuxiu.github.io/MyBlog/images/pic4.png">
+<meta property="og:updated_time" content="2018-06-09T15:00:32.483Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HTTP报文">
+<meta name="twitter:description" content="报文的组成部分报文由三个部分组成：对报文进行描述的起始行，包含属性的首部块，以及可选的、包含数据的主体部分。报文的语法:所有的报文分为两类：请求报文，响应报文。 请求报文一个HTTP请求报文由请求行（request line）、请求头部（header）、空行和请求数据4个部分组成格式：1234&amp;lt;method&amp;gt;&amp;lt;request-URL&amp;gt;&amp;lt;version&amp;gt;&amp;lt;h">
+<meta name="twitter:image" content="https://qiuyuxiu.github.io/MyBlog/images/pic4.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/MyBlog/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://qiuyuxiu.github.io/MyBlog/2017/11/08/HTTP报文/"/>
+
+
+
+
+
+  <title>HTTP报文 | 个人博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/MyBlog/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">有关于前端学习的个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/MyBlog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/MyBlog/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/MyBlog/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/MyBlog/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://qiuyuxiu.github.io/MyBlog/MyBlog/2017/11/08/HTTP报文/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Daisy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/MyBlog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">HTTP报文</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-08T19:19:33+08:00">
+                2017-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/MyBlog/categories/HTTP/" itemprop="url" rel="index">
+                    <span itemprop="name">HTTP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="报文的组成部分"><a href="#报文的组成部分" class="headerlink" title="报文的组成部分"></a>报文的组成部分</h2><p>报文由三个部分组成：对报文进行描述的起始行，包含属性的首部块，以及可选的、包含数据的主体部分。<br><img src="../../../../images/pic4.png" alt="报文组成部分"><br>报文的语法:<br>所有的报文分为两类：请求报文，响应报文。</p>
+<h2 id="请求报文"><a href="#请求报文" class="headerlink" title="请求报文"></a>请求报文</h2><p>一个HTTP请求报文由请求行（request line）、请求头部（header）、空行和请求数据4个部分组成<br>格式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;method&gt;&lt;request-URL&gt;&lt;version&gt;</span><br><span class="line">&lt;headers&gt;</span><br><span class="line">//空行</span><br><span class="line">&lt;entity-body&gt;</span><br></pre></td></tr></table></figure></p>
+<p>1.请求行：请求方法，链接，HTTP版本。<br>GET<br>GET最常见的一种请求方式，当客户端要从服务器中读取文档时，当点击网页上的链接或者通过在浏览器的地址栏输入网址来浏览网页的，使用的都是GET方式。GET方法要求服务器将URL定位的资源放在响应报文的数据部分，回送给客户端。<br>由于GET请求是在URL可见的，所以这种方式不适合传送私密数据。另外，由于不同的浏览器对地址的字符限制也有所不同，一般最多只能识别1024个字符，所以如果需要传送大量数据的时候，也不适合使用GET方式。</p>
+<p>POST<br>使用POST方法可以允许客户端给服务器提供信息较多。POST方法将请求参数封装在HTTP请求数据中，以名称/值的形式出现，可以传输大量数据，这样POST方式对传送的数据大小没有限制，而且也不会显示在URL中。<br>POST方式请求行中不包含数据字符串，这些数据保存在”请求内容”部分，各数据之间也是使用”&amp;”符号隔开。POST方式大多用于页面的表单中。<br>2.请求头部：请求头部由关键字/值对组成，每行一对，关键字和值用英文冒号“:”分隔。请求头部通知服务器有关于客户端请求的信息。<br>3.空行<br>最后一个请求头之后是一个空行，发送回车符和换行符，通知服务器以下不再有请求头。<br>4.请求数据<br>请求数据不在GET方法中使用，而是在POST方法中使用</p>
+<h2 id="响应报文"><a href="#响应报文" class="headerlink" title="响应报文"></a>响应报文</h2><p>HTTP响应也由三个部分组成，分别是：状态行、消息报头、响应正文<br>格式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;version&gt;&lt;status-code&gt;&lt;reason-phrase&gt;</span><br><span class="line">&lt;headers&gt;</span><br><span class="line">//空行</span><br><span class="line">&lt;entity-body&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="报文各部分说明"><a href="#报文各部分说明" class="headerlink" title="报文各部分说明"></a>报文各部分说明</h2><p><method>: 客户端希望服务器对资源执行的动作，GET,POST…</method></p>
+<p><request-url>: 命名了所请求资源，或者URL路径组件的完整URL。</request-url></p>
+<p><version>: 报文所使用的HTTP版本，HTTP/.</version></p>
+<p><status-code>: 状态码</status-code></p>
+<p><reason-phrase>: 状态码说明</reason-phrase></p>
+<p><header>: 首部</header></p>
+<p><entity-body>: 实体的主体部分</entity-body></p>
+<h2 id="报文首部说明"><a href="#报文首部说明" class="headerlink" title="报文首部说明"></a>报文首部说明</h2><p>通用首部：既可以出现在请求报文中，也可以出现在响应报文中。<br>请求首部：提供更多的有关请求的信息。<br>响应首部：提供更多的有关响应的信息。<br>实体首部：描述主体的长度和内容，或者资源自身。<br>扩展首部：规范中没有定义的新首部。</p>
+<h4 id="通用首部"><a href="#通用首部" class="headerlink" title="通用首部"></a>通用首部</h4><p>Connection,Date,MIME-Version,Trailer,Transfer-Encoding,Update,Via<br>通用缓存首部：Cache-Control,Pragma</p>
+<h4 id="请求首部"><a href="#请求首部" class="headerlink" title="请求首部"></a>请求首部</h4><p>Accept首部:<br>Accept:text/html (告诉服务器能够发送哪些媒体类型)<br>Accept-Charset: (告诉服务器能够发送哪些字符集)<br>Accept-Encoding:gzip, deflate (告诉服务器能够发送哪些编码方式)<br>Accept-Language:zh-CN,zh;q=0.8 (告诉服务器能够发送哪些语言)</p>
+<h4 id="条件请求首部："><a href="#条件请求首部：" class="headerlink" title="条件请求首部："></a>条件请求首部：</h4><p>Expect,If-Match,If-Modified-Since…</p>
+<h4 id="安全请求首部："><a href="#安全请求首部：" class="headerlink" title="安全请求首部："></a>安全请求首部：</h4><p>Authorization,Cookie…</p>
+<h4 id="代理请求首部："><a href="#代理请求首部：" class="headerlink" title="代理请求首部："></a>代理请求首部：</h4><p>Max-Forward,Proxy-Authorization,Proxy-Connection</p>
+<h4 id="响应首部"><a href="#响应首部" class="headerlink" title="响应首部"></a>响应首部</h4><p>协商首部，安全响应首部</p>
+<h4 id="实体首部"><a href="#实体首部" class="headerlink" title="实体首部"></a>实体首部</h4><p>内容首部，实体缓存首部</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/MyBlog/tags/HTTP/" rel="tag"># HTTP</a>
+          
+            <a href="/MyBlog/tags/报文/" rel="tag"># 报文</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/MyBlog/2017/08/08/HTTP状态码与方法/" rel="next" title="HTTP状态码与方法">
+                <i class="fa fa-chevron-left"></i> HTTP状态码与方法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/MyBlog/2018/06/08/长连接-短连接-长轮询-短轮询/" rel="prev" title="长连接&短连接&长轮询&短轮询">
+                长连接&短连接&长轮询&短轮询 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Daisy</p>
+              <p class="site-description motion-element" itemprop="description">前端技术个人博客</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/MyBlog/archives/">
+              
+                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/MyBlog/categories/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/MyBlog/tags/index.html">
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/MyBlog/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#报文的组成部分"><span class="nav-number">1.</span> <span class="nav-text">报文的组成部分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#请求报文"><span class="nav-number">2.</span> <span class="nav-text">请求报文</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#响应报文"><span class="nav-number">3.</span> <span class="nav-text">响应报文</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#报文各部分说明"><span class="nav-number">4.</span> <span class="nav-text">报文各部分说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#报文首部说明"><span class="nav-number">5.</span> <span class="nav-text">报文首部说明</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#通用首部"><span class="nav-number">5.0.1.</span> <span class="nav-text">通用首部</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#请求首部"><span class="nav-number">5.0.2.</span> <span class="nav-text">请求首部</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#条件请求首部："><span class="nav-number">5.0.3.</span> <span class="nav-text">条件请求首部：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安全请求首部："><span class="nav-number">5.0.4.</span> <span class="nav-text">安全请求首部：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代理请求首部："><span class="nav-number">5.0.5.</span> <span class="nav-text">代理请求首部：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#响应首部"><span class="nav-number">5.0.6.</span> <span class="nav-text">响应首部</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实体首部"><span class="nav-number">5.0.7.</span> <span class="nav-text">实体首部</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Daisy</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/MyBlog/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/MyBlog/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/MyBlog/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/MyBlog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/MyBlog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/MyBlog/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/MyBlog/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/MyBlog/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/MyBlog/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/MyBlog/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/MyBlog/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
