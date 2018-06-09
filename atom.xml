@@ -6,7 +6,7 @@
   <link href="/MyBlog/atom.xml" rel="self"/>
   
   <link href="https://qiuyuxiu.github.io/MyBlog/"/>
-  <updated>2018-06-08T11:22:44.082Z</updated>
+  <updated>2018-06-08T11:22:31.344Z</updated>
   <id>https://qiuyuxiu.github.io/MyBlog/</id>
   
   <author>
@@ -15,20 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>JavaScript DOM扩展</title>
-    <link href="https://qiuyuxiu.github.io/MyBlog/2018/06/08/JavaScript-DOM%E6%89%A9%E5%B1%95/"/>
-    <id>https://qiuyuxiu.github.io/MyBlog/2018/06/08/JavaScript-DOM扩展/</id>
-    <published>2018-06-08T11:22:44.000Z</published>
-    <updated>2018-06-08T11:22:44.082Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
   
   <entry>
     <title>JavaScript DOM2和DOM3</title>
@@ -209,6 +195,31 @@
     
     </summary>
     
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScript DOM扩展</title>
+    <link href="https://qiuyuxiu.github.io/MyBlog/2017/07/18/JavaScript-DOM%E6%89%A9%E5%B1%95/"/>
+    <id>https://qiuyuxiu.github.io/MyBlog/2017/07/18/JavaScript-DOM扩展/</id>
+    <published>2017-07-18T06:22:44.000Z</published>
+    <updated>2018-06-09T09:29:02.796Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="选择符API"><a href="#选择符API" class="headerlink" title="选择符API"></a>选择符API</h2><p>querySelector()接收一个css选择符，返回与该模式匹配的第一个元素。<br>querySelectorAll()接收的参数也是css选择符，返回的是一个NodeList的实例。通过item()和方括号来访问它的每个元素。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var body=document.querySelector(&quot;body&quot;);</span><br><span class="line">var div=document.querySelector(&quot;#div&quot;);</span><br><span class="line">var className=document.querySelector(&quot;.btn&quot;);</span><br><span class="line">var img=document.querySelector(&quot;img.button&quot;);</span><br></pre></td></tr></table></figure></p><h2 id="元素遍历：跨浏览器遍历某元素的所有子元素"><a href="#元素遍历：跨浏览器遍历某元素的所有子元素" class="headerlink" title="元素遍历：跨浏览器遍历某元素的所有子元素;"></a>元素遍历：跨浏览器遍历某元素的所有子元素;</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var i,len,child=element.firstChild;</span><br><span class="line">while(child!=element.lastChild)&#123;</span><br><span class="line">    if(child.nodeType==1)&#123;</span><br><span class="line">        processChild(child);</span><br><span class="line">    &#125;</span><br><span class="line">    child=child.nextSibling;</span><br><span class="line">&#125;</span><br><span class="line">var i,len,child=element.firstElementChild;</span><br><span class="line">while(child!=element.lastElementChild)&#123;</span><br><span class="line">    processChild(child);</span><br><span class="line">    child=child.nextElementSibling;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>HTML5<br>getElementByTagName()方法：接收一个参数，包含一或多个类名的字符串，返回带有指定类的所有元素的NodeList。<br>add(),contains(),remove(),toggle()方法都是之后类名进行操作。</p><p>焦点管理<br>focus()方法是元素获得了焦点。<br>hasFocus()方法用于确定文档是否获得了焦点。</p><p>插入标记<br>innerHTML属性：innerHTML属性返回与调用元素的所有子节点（包括元素、注释和文本节点）对应的HTML标记。并非所有元素都支持这个innerHTML属性，不支持innerHTML属性的有:<code>&lt;head&gt;</code></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;选择符API&quot;&gt;&lt;a href=&quot;#选择符API&quot; class=&quot;headerlink&quot; title=&quot;选择符API&quot;&gt;&lt;/a&gt;选择符API&lt;/h2&gt;&lt;p&gt;querySelector()接收一个css选择符，返回与该模式匹配的第一个元素。&lt;br&gt;querySele
+      
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="https://qiuyuxiu.github.io/MyBlog/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript" scheme="https://qiuyuxiu.github.io/MyBlog/tags/JavaScript/"/>
     
   </entry>
   
