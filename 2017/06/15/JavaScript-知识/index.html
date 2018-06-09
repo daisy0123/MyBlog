@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/MyBlog/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/MyBlog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/MyBlog/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/MyBlog/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/MyBlog/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/MyBlog/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/MyBlog/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JavaScript," />
+
+
+
+
+
+  <link rel="alternate" href="/MyBlog/atom.xml" title="个人博客" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="引入js的用法12345678910111213&amp;lt;!doctype html&amp;gt;&amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt; &amp;lt;head&amp;gt;  &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt;  &amp;lt;meta name=&amp;quot;Generator&amp;quot; content=&amp;quot;EditPlus?&amp;quot;&amp;gt">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript 知识">
+<meta property="og:url" content="https://qiuyuxiu.github.io/MyBlog/2017/06/15/JavaScript-知识/index.html">
+<meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="引入js的用法12345678910111213&amp;lt;!doctype html&amp;gt;&amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt; &amp;lt;head&amp;gt;  &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt;  &amp;lt;meta name=&amp;quot;Generator&amp;quot; content=&amp;quot;EditPlus?&amp;quot;&amp;gt">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-06-09T06:35:31.187Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript 知识">
+<meta name="twitter:description" content="引入js的用法12345678910111213&amp;lt;!doctype html&amp;gt;&amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt; &amp;lt;head&amp;gt;  &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt;  &amp;lt;meta name=&amp;quot;Generator&amp;quot; content=&amp;quot;EditPlus?&amp;quot;&amp;gt">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/MyBlog/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://qiuyuxiu.github.io/MyBlog/2017/06/15/JavaScript-知识/"/>
+
+
+
+
+
+  <title>JavaScript 知识 | 个人博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/MyBlog/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">有关于前端学习的个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/MyBlog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/MyBlog/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/MyBlog/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/MyBlog/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://qiuyuxiu.github.io/MyBlog/MyBlog/2017/06/15/JavaScript-知识/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Daisy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/MyBlog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JavaScript 知识</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-15T13:27:14+08:00">
+                2017-06-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/MyBlog/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="引入js的用法"><a href="#引入js的用法" class="headerlink" title="引入js的用法"></a>引入js的用法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;!doctype html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line"> &lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;Generator&quot; content=&quot;EditPlus?&quot;&gt;</span><br><span class="line">  &lt;title&gt;index &lt;/title&gt;</span><br><span class="line">  &lt;script type=&quot;text/javascript&quot; src=&quot;results.js&quot;/&gt;&lt;/script&gt;</span><br><span class="line">  &lt;link rel=&quot;result.css&quot; type=&quot;text/css&quot;/&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;p id=&quot;dateField&quot;&gt; &lt;/p&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="Date对象"><a href="#Date对象" class="headerlink" title="Date对象"></a>Date对象</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var myDate=new Date();</span><br><span class="line">var dateString=myDate.toLocaleDateString()+&quot;  &quot;+myDate.toLocaleTimeString();</span><br><span class="line">var dateLoc=document.getElementById(&quot;dateField&quot;);</span><br><span class="line">dateLoc.innerHTML=&quot;Hello-Page Rendered on&quot;+dateString;</span><br></pre></td></tr></table></figure>
+<h2 id="倒计时到将来某一天"><a href="#倒计时到将来某一天" class="headerlink" title="倒计时到将来某一天"></a>倒计时到将来某一天</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var today=new Date();</span><br><span class="line">var then=new Date();</span><br><span class="line">then.setFullYear(2012,0,1);</span><br><span class="line">var diff=then.getTime()-today.getTime();  //getTime()得到的是以毫秒为单位。</span><br><span class="line">diff=Math.floor(diff/(1000*60*60*24));</span><br><span class="line">var dateLoc=document.getElementById(&quot;dateFiled&quot;);</span><br><span class="line">dateLoc.innerHTML=&quot;There are&quot;+diff+&quot;days until 1/1/2012&quot;;</span><br></pre></td></tr></table></figure>
+<h2 id="计算渲染时间"><a href="#计算渲染时间" class="headerlink" title="计算渲染时间"></a>计算渲染时间</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var started=new Date();</span><br><span class="line">var now=started.getTime();</span><br><span class="line">var bottom=new Date();</span><br><span class="line">var diff=(bottom.getTime()-now)/1000;</span><br><span class="line">var finaltime=diff.toPrecision(5);</span><br><span class="line">var dateLoc=document.getElementById(&quot;dateFiled&quot;);</span><br><span class="line">dateLoc.innerHTML=&quot;Page rendered in&quot;+finaltime+&quot;seconds.&quot;;</span><br></pre></td></tr></table></figure>
+<h2 id="拖迟"><a href="#拖迟" class="headerlink" title="拖迟"></a>拖迟</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for(var i=0;i&lt;100000;i++)&#123;</span><br><span class="line">//delay</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var myString=&quot;http://www.braingia.org&quot;;</span><br><span class="line">var myRegex=/http:\/\/\w+\.(.*)/;</span><br><span class="line">var results=myRegex.exec(myString);</span><br><span class="line">alert(results[1]);</span><br></pre></td></tr></table></figure>
+<h2 id="match-方法"><a href="#match-方法" class="headerlink" title="match 方法"></a>match 方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var emailAddr=&quot;suehring@braingia.com&quot;;</span><br><span class="line">var myRegex=/\.com/;</span><br><span class="line">var checkMatch=emailAddr.match(myRegex);</span><br><span class="line">alert(checkMatch[0]);</span><br></pre></td></tr></table></figure>
+<h2 id="判断一个给定的email地址是否包含字符串-com"><a href="#判断一个给定的email地址是否包含字符串-com" class="headerlink" title="判断一个给定的email地址是否包含字符串.com"></a>判断一个给定的email地址是否包含字符串.com</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var emailAddr=&quot;suehring@braingia.com&quot;;</span><br><span class="line">var myRegex=/\.com/;</span><br><span class="line">var checkMatch=emailAddr.match(myRegex);</span><br><span class="line">if(checkMatch!==null)&#123;</span><br><span class="line">alert(checkMatch[0]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="search方法"><a href="#search方法" class="headerlink" title="search方法"></a>search方法</h2><p>(返回的是第一次匹配的索引值（位置）)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var emailAddr=&quot;suehring@braingia.com&quot;;</span><br><span class="line">var myRegex=/\.com/;</span><br><span class="line">var searchResult=emailAddr.search(myRegex);</span><br><span class="line">alert(checkMatch[0]);</span><br></pre></td></tr></table></figure></p>
+<h2 id="replace方法"><a href="#replace方法" class="headerlink" title="replace方法"></a>replace方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var emailAddr=&quot;suehring@braingia.com&quot;;</span><br><span class="line">var myRegex=/\.com$/;</span><br><span class="line">var replaceWith=&quot;.net&quot;;</span><br><span class="line">var result=emailAddr.replace(myRegex);</span><br><span class="line">alert(result);</span><br></pre></td></tr></table></figure>
+<h2 id="使用detele操作符"><a href="#使用detele操作符" class="headerlink" title="使用detele操作符"></a>使用detele操作符</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">var star=&#123;&#125;;</span><br><span class="line">star[&quot;Polaris&quot;]=new object;</span><br><span class="line">star[&quot;Mizar&quot;]=new object;</span><br><span class="line">star[&quot;Aldebaran&quot;]=new object;</span><br><span class="line">star[&quot;Rigel&quot;]=new object;</span><br><span class="line">star[&quot;Polaris&quot;].constellation=&quot;Ursa Minor&quot;;</span><br><span class="line">star[&quot;Mizar&quot;].constellation=&quot;Ursa Minor&quot;;</span><br><span class="line">star[&quot;Aldebaran&quot;].constellation=&quot;Ursa Minor&quot;;</span><br><span class="line">star[&quot;Rigel&quot;].constellation=&quot;Ursa Minor&quot;;</span><br><span class="line">detele(star[&quot;Polaris&quot;].constellation);</span><br><span class="line">for(starName in star)&#123;</span><br><span class="line">  var para=document.createElement(&apos;p&apos;);</span><br><span class="line">  para.id=starName;</span><br><span class="line">  para.appendChild(document.createTextNode(starName+&quot;:&quot;+star[starName].constellation));</span><br><span class="line">  document.getElementsByTagName(&quot;body&quot;)[0].appendChild(para);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="for-in-循环"><a href="#for-in-循环" class="headerlink" title="for in 循环"></a>for in 循环</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">for(var myProp in myObject)&#123;</span><br><span class="line">  alert(myProp+&quot; =&quot;+myObject[myProp]);</span><br><span class="line">&#125;</span><br><span class="line">var star=new object;</span><br><span class="line">star.name=&quot;&quot;;</span><br><span class="line">star.type=&quot;&quot;;</span><br><span class="line">star.constellation=&quot;&quot;;</span><br><span class="line">for(var starProp in star)&#123;</span><br><span class="line">  alert(starProp+&quot;=&quot;+star[starProp]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="表单验证"><a href="#表单验证" class="headerlink" title="表单验证"></a>表单验证</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;!doctype html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">&lt;meta name=&quot;Generator&quot; content=&quot;EditPlus®&quot;&gt;</span><br><span class="line">&lt;title&gt;情感分析结果&lt;/title&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;results.js&quot;/&gt;&lt;/script&gt;</span><br><span class="line">&lt;link rel=&quot;result.css&quot; type=&quot;text/css&quot;/&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">   &lt;form id=&quot;myfrom&quot; action=&quot;#&quot; onsubmit=&quot;return alertName();&quot;&gt;</span><br><span class="line">     &lt;p&gt;Username:&lt;input id=&quot;nametext&quot; name=&quot;username&quot; type=&quot;text&quot;/&gt;&lt;/p&gt;</span><br><span class="line">     &lt;p&gt;&lt;input type=&quot;submit&quot;/&gt;&lt;/p&gt;</span><br><span class="line">   &lt;/form&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">function alertName()&#123;</span><br><span class="line">  var name=document.forms[0].nametext.value;</span><br><span class="line">  if(name==&quot;steve&quot;)&#123;</span><br><span class="line">    alert(&quot;Hello Steve. Welcome to Machine&quot;);</span><br><span class="line">  &#125;else if(name==&quot;nancy&quot;)&#123;</span><br><span class="line">    alert(&quot;Hello Tim.&quot;);</span><br><span class="line">  &#125;else&#123;</span><br><span class="line">    alert(&quot;Hello&quot;+name);</span><br><span class="line">  &#125;</span><br><span class="line">  return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Window对象的一些属性"><a href="#Window对象的一些属性" class="headerlink" title="Window对象的一些属性"></a>Window对象的一些属性</h2><p>close:窗口关闭时设置为true；<br>defaultStatus：用来设置出现在浏览器状态栏中的默认文本；<br>name：窗口第一次被打开时所设置的窗口的名字；<br>opener：引用创建这个窗口的窗口；<br>parent:常常和帧一起使用，指创建特定窗口的窗口，或者该帧的上一级窗口；<br>status：常常用来设置当访问者悬停在链接这样的元素上的时候状态栏中的文本；<br>top：最高或最顶层的父窗口；</p>
+<h2 id="window对象的一些方法"><a href="#window对象的一些方法" class="headerlink" title="window对象的一些方法"></a>window对象的一些方法</h2><p>addEventListener():跨浏览器（除了Internet Explorer）事件处理程序方法。<br>attachEvent():跨浏览器Internet Explorer事件处理程序方法。<br>blur():把键盘输入的焦点从浏览器窗口移开。<br>focus():把键盘输入的焦点移动到浏览器窗口。<br>close():关闭浏览器窗口。<br>detachEvent():跨浏览器Internet Explorer事件处理程序删除方法。<br>removeEventListener():跨浏览器（除了Internet Explorer）事件处理程序删除方法。<br>open():打开一个窗口。<br>print():导致调用浏览器的打印函数，其行为就像有人点击了浏览器的print按钮。</p>
+<h2 id="Window对象移动和调整窗口大小的方法"><a href="#Window对象移动和调整窗口大小的方法" class="headerlink" title="Window对象移动和调整窗口大小的方法"></a>Window对象移动和调整窗口大小的方法</h2><p>moveBy():用来把窗口移动到一个相对位置<br>moveTo():用来把窗口移动到一个特定位置<br>resizeBy():用来按一相对量改变窗口大小<br>resizeTo():用来把窗口大小改变到一个特定大小</p>
+<h2 id="Window对象中与定时器相关的方法"><a href="#Window对象中与定时器相关的方法" class="headerlink" title="Window对象中与定时器相关的方法"></a>Window对象中与定时器相关的方法</h2><p>clearInterval():<br>clearTimeout():<br>setInterval():<br>setTimeout():</p>
+<h2 id="获取有关屏幕的信息"><a href="#获取有关屏幕的信息" class="headerlink" title="获取有关屏幕的信息"></a>获取有关屏幕的信息</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">availHeight/availWidth(可用高度)/colorDepth/height/width（总高度）</span><br><span class="line">e.g:alert(screen.availHeight);</span><br></pre></td></tr></table></figure>
+<h2 id="获取元素"><a href="#获取元素" class="headerlink" title="获取元素"></a>获取元素</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">getElementById()和getElementsByTagName()</span><br></pre></td></tr></table></figure>
+<h2 id="HTML集合"><a href="#HTML集合" class="headerlink" title="HTML集合"></a>HTML集合</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Document.anchors</span><br><span class="line">Document.forms</span><br><span class="line">Document.images</span><br><span class="line">Document.links</span><br></pre></td></tr></table></figure>
+<h2 id="Window尺寸"><a href="#Window尺寸" class="headerlink" title="Window尺寸"></a>Window尺寸</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var w=window.innerWidth|| document.documentElement.clientWidth|| document.body.clientWidth;</span><br><span class="line">var h=window.innerHeight|| document.documentElement.clientHeight|| document.body.clientHeight;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/MyBlog/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/MyBlog/2017/06/15/JavaScript-变量提升问题/" rel="next" title="JavaScript 变量提升问题">
+                <i class="fa fa-chevron-left"></i> JavaScript 变量提升问题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/MyBlog/2018/06/08/长连接-短连接-长轮询-短轮询/" rel="prev" title="长连接&短连接&长轮询&短轮询">
+                长连接&短连接&长轮询&短轮询 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Daisy</p>
+              <p class="site-description motion-element" itemprop="description">前端技术个人博客</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/MyBlog/archives/">
+              
+                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/MyBlog/categories/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/MyBlog/tags/index.html">
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/MyBlog/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#引入js的用法"><span class="nav-number">1.</span> <span class="nav-text">引入js的用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Date对象"><span class="nav-number">2.</span> <span class="nav-text">Date对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#倒计时到将来某一天"><span class="nav-number">3.</span> <span class="nav-text">倒计时到将来某一天</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#计算渲染时间"><span class="nav-number">4.</span> <span class="nav-text">计算渲染时间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拖迟"><span class="nav-number">5.</span> <span class="nav-text">拖迟</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正则表达式"><span class="nav-number">6.</span> <span class="nav-text">正则表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#match-方法"><span class="nav-number">7.</span> <span class="nav-text">match 方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#判断一个给定的email地址是否包含字符串-com"><span class="nav-number">8.</span> <span class="nav-text">判断一个给定的email地址是否包含字符串.com</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#search方法"><span class="nav-number">9.</span> <span class="nav-text">search方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#replace方法"><span class="nav-number">10.</span> <span class="nav-text">replace方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用detele操作符"><span class="nav-number">11.</span> <span class="nav-text">使用detele操作符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#for-in-循环"><span class="nav-number">12.</span> <span class="nav-text">for in 循环</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表单验证"><span class="nav-number">13.</span> <span class="nav-text">表单验证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Window对象的一些属性"><span class="nav-number">14.</span> <span class="nav-text">Window对象的一些属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#window对象的一些方法"><span class="nav-number">15.</span> <span class="nav-text">window对象的一些方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Window对象移动和调整窗口大小的方法"><span class="nav-number">16.</span> <span class="nav-text">Window对象移动和调整窗口大小的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Window对象中与定时器相关的方法"><span class="nav-number">17.</span> <span class="nav-text">Window对象中与定时器相关的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取有关屏幕的信息"><span class="nav-number">18.</span> <span class="nav-text">获取有关屏幕的信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取元素"><span class="nav-number">19.</span> <span class="nav-text">获取元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTML集合"><span class="nav-number">20.</span> <span class="nav-text">HTML集合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Window尺寸"><span class="nav-number">21.</span> <span class="nav-text">Window尺寸</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Daisy</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/MyBlog/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/MyBlog/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/MyBlog/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/MyBlog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/MyBlog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/MyBlog/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/MyBlog/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/MyBlog/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/MyBlog/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/MyBlog/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/MyBlog/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
