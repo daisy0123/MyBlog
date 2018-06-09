@@ -6,7 +6,7 @@
   <link href="/MyBlog/atom.xml" rel="self"/>
   
   <link href="https://qiuyuxiu.github.io/MyBlog/"/>
-  <updated>2018-06-08T11:24:09.193Z</updated>
+  <updated>2018-06-08T11:23:59.996Z</updated>
   <id>https://qiuyuxiu.github.io/MyBlog/</id>
   
   <author>
@@ -15,20 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>JavaScript 引用类型</title>
-    <link href="https://qiuyuxiu.github.io/MyBlog/2018/06/08/JavaScript-%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B/"/>
-    <id>https://qiuyuxiu.github.io/MyBlog/2018/06/08/JavaScript-引用类型/</id>
-    <published>2018-06-08T11:24:09.000Z</published>
-    <updated>2018-06-08T11:24:09.193Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
   
   <entry>
     <title>JavaScript 基本包装方法</title>
@@ -288,6 +274,20 @@
     <id>https://qiuyuxiu.github.io/MyBlog/2018/06/08/JSONP/</id>
     <published>2018-06-08T08:52:46.000Z</published>
     <updated>2018-06-08T08:52:46.608Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>http三个版本</title>
+    <link href="https://qiuyuxiu.github.io/MyBlog/2018/06/08/http%E4%B8%89%E4%B8%AA%E7%89%88%E6%9C%AC/"/>
+    <id>https://qiuyuxiu.github.io/MyBlog/2018/06/08/http三个版本/</id>
+    <published>2018-06-08T08:52:34.000Z</published>
+    <updated>2018-06-08T08:52:34.088Z</updated>
     
     <summary type="html">
     
