@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/MyBlog/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/MyBlog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/MyBlog/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/MyBlog/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/MyBlog/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/MyBlog/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/MyBlog/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="HTTP,状态码," />
+
+
+
+
+
+  <link rel="alternate" href="/MyBlog/atom.xml" title="个人博客" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="看了《HTTP权威指南》之后，整理些笔记。 HTTP状态码100~199信息性状态码100：continue 说明收到了请求的初始部分，请客户端继续。发送了这个状态码之后，服务器在收到请求之后必须响应。101：Switching Protocols 说明服务器正在根据客户端的指定，将协议切换成update首部所列的协议。 200~299成功状态码200：OK 请求没问题，实体的主体部分包含了所请求">
+<meta name="keywords" content="HTTP,状态码">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTTP状态码与方法">
+<meta property="og:url" content="https://qiuyuxiu.github.io/MyBlog/2017/08/08/HTTP状态码与方法/index.html">
+<meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="看了《HTTP权威指南》之后，整理些笔记。 HTTP状态码100~199信息性状态码100：continue 说明收到了请求的初始部分，请客户端继续。发送了这个状态码之后，服务器在收到请求之后必须响应。101：Switching Protocols 说明服务器正在根据客户端的指定，将协议切换成update首部所列的协议。 200~299成功状态码200：OK 请求没问题，实体的主体部分包含了所请求">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-06-09T14:45:04.118Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HTTP状态码与方法">
+<meta name="twitter:description" content="看了《HTTP权威指南》之后，整理些笔记。 HTTP状态码100~199信息性状态码100：continue 说明收到了请求的初始部分，请客户端继续。发送了这个状态码之后，服务器在收到请求之后必须响应。101：Switching Protocols 说明服务器正在根据客户端的指定，将协议切换成update首部所列的协议。 200~299成功状态码200：OK 请求没问题，实体的主体部分包含了所请求">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/MyBlog/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://qiuyuxiu.github.io/MyBlog/2017/08/08/HTTP状态码与方法/"/>
+
+
+
+
+
+  <title>HTTP状态码与方法 | 个人博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/MyBlog/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">有关于前端学习的个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/MyBlog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/MyBlog/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/MyBlog/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/MyBlog/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://qiuyuxiu.github.io/MyBlog/MyBlog/2017/08/08/HTTP状态码与方法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Daisy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/MyBlog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">HTTP状态码与方法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-08T16:21:20+08:00">
+                2017-08-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/MyBlog/categories/HTTP/" itemprop="url" rel="index">
+                    <span itemprop="name">HTTP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>看了《HTTP权威指南》之后，整理些笔记。</p>
+<h2 id="HTTP状态码"><a href="#HTTP状态码" class="headerlink" title="HTTP状态码"></a>HTTP状态码</h2><h4 id="100-199信息性状态码"><a href="#100-199信息性状态码" class="headerlink" title="100~199信息性状态码"></a>100~199信息性状态码</h4><p>100：continue 说明收到了请求的初始部分，请客户端继续。发送了这个状态码之后，服务器在收到请求之后必须响应。<br>101：Switching Protocols 说明服务器正在根据客户端的指定，将协议切换成update首部所列的协议。</p>
+<h4 id="200-299成功状态码"><a href="#200-299成功状态码" class="headerlink" title="200~299成功状态码"></a>200~299成功状态码</h4><p>200：OK 请求没问题，实体的主体部分包含了所请求的资源。<br>201：Create 用于创建服务器对象的请求（比如PUT）。响应的实体主体部分中应该包含各种引用了已创建的资源的URL，location首部包含的则是最具体的引用。<br>202：Accepted 请求已被接受，但服务器还未对其执行任何动作，不能保证服务器会完成这个请求。</p>
+<h4 id="300-399重定向状态码"><a href="#300-399重定向状态码" class="headerlink" title="300~399重定向状态码"></a>300~399重定向状态码</h4><p>300：Multiple Choices 客户端请求一个实际指向多个资源的URL时会返回这个状态码。<br>301 Moved Permanently 在请求的URL已被移除时使用，相应的location首部中应该包含资源现在所处的URL。<br>302 Found 与301状态码类似，但是，客户端应该使用location首部给出的URL来临时定位资源，将来的请求仍应使用老的URL。<br>303 see Other 告知客户端应该用另一个URL来获取资源。新的URL位于响应报文的location首部，其主要目的是允许post请求的响应将客户端定向到某个资源。<br>304 Not Modified 请求的资源未修改过。<br>307 Temporary 与301类似，但客户端应该使用location首部给出的URL来临时定位资源。</p>
+<h4 id="400-499客户端错误状态码"><a href="#400-499客户端错误状态码" class="headerlink" title="400~499客户端错误状态码"></a>400~499客户端错误状态码</h4><p>400：Bad Request 用于告知客户端它发送了一个错误的请求<br>401：无权限<br>403:Forbidden 请求被服务器拒绝了。可查看实体的主体部分来知道为何。<br>404：Not Found 服务器无法找到所请求的资源</p>
+<h4 id="500-599服务器错误状态码"><a href="#500-599服务器错误状态码" class="headerlink" title="500~599服务器错误状态码"></a>500~599服务器错误状态码</h4><p>500：Internal Server Error 服务器遇到一个妨碍它提供服务的错误<br>501：Not Implemented 客户端发起请求超出服务器的能力范围<br>502：Bad Gateway<br>503: Service Unavailable 说明服务器现在无法为请求提供服务，但将来可以</p>
+<p>详细见W3school:<a href="http://www.w3school.com.cn/tags/html_ref_httpmessages.asp" target="_blank" rel="noopener">http://www.w3school.com.cn/tags/html_ref_httpmessages.asp</a></p>
+<h2 id="HTTP-请求方法"><a href="#HTTP-请求方法" class="headerlink" title="HTTP 请求方法"></a>HTTP 请求方法</h2><h4 id="什么是-HTTP？"><a href="#什么是-HTTP？" class="headerlink" title="什么是 HTTP？"></a>什么是 HTTP？</h4><p>超文本传输协议（HTTP）的设计目的是保证客户机与服务器之间的通信。<br>HTTP 的工作方式是客户机与服务器之间的请求-应答协议。<br>web 浏览器可能是客户端，而计算机上的网络应用程序也可能作为服务器端。</p>
+<h4 id="两种-HTTP-请求方法：GET-和-POST"><a href="#两种-HTTP-请求方法：GET-和-POST" class="headerlink" title="两种 HTTP 请求方法：GET 和 POST"></a>两种 HTTP 请求方法：GET 和 POST</h4><p>在客户机和服务器之间进行请求-响应时，两种最常被用到的方法是：GET 和 POST。<br>GET - 从指定的资源请求数据。<br>POST - 向指定的资源提交要被处理的数据</p>
+<h4 id="GET-方法"><a href="#GET-方法" class="headerlink" title="GET 方法"></a>GET 方法</h4><p>查询字符串（名称/值对）是在 GET 请求的 URL 中发送的：<br>GET 请求可被缓存<br>GET 请求保留在浏览器历史记录中<br>GET 请求可被收藏为书签<br>GET 请求不应在处理敏感数据时使用<br>GET 请求有长度限制<br>GET 请求只应当用于取回数据</p>
+<h4 id="POST-方法"><a href="#POST-方法" class="headerlink" title="POST 方法"></a>POST 方法</h4><p>查询字符串（名称/值对）是在 POST 请求的 HTTP 消息主体中发送的：<br>POST 请求不会被缓存<br>POST 请求不会保留在浏览器历史记录中<br>POST 不能被收藏为书签<br>POST 请求对数据长度没有要求</p>
+<h4 id="其他请求方法："><a href="#其他请求方法：" class="headerlink" title="其他请求方法："></a>其他请求方法：</h4><p>HEAD 与 GET 相同，但只返回 HTTP 报头，不返回文档主体。<br>PUT 上传指定的 URI 表示。<br>DELETE 删除指定资源。<br>OPTIONS 返回服务器支持的 HTTP 方法。<br>CONNECT 把请求连接转换到透明的 TCP/IP 通道</p>
+<h2 id="GET-与-POST-区别："><a href="#GET-与-POST-区别：" class="headerlink" title="GET 与 POST 区别："></a>GET 与 POST 区别：</h2><p>GET后退按钮/刷新无害，POST数据会被重新提交（浏览器应该告知用户数据会被重新提交）。<br>GET书签可收藏，POST为书签不可收藏。GET能被缓存，POST不能缓存 。<br>GET编码类型application/x-www-form-url，POST编码类型encodedapplication/x-www-form-urlencoded 或 multipart/form-data。为二进制数据使用多重编码。<br>GET历史参数保留在浏览器历史中。POST参数不会保存在浏览器历史中。<br>GET对数据长度有限制，当发送数据时，GET 方法向 URL 添加数据；URL 的长度是受限制的（URL 的最大长度是 2048 个字符）。POST无限制。<br>GET只允许 ASCII 字符。POST没有限制。也允许二进制数据。<br>与 POST 相比，GET 的安全性较差，因为所发送的数据是 URL 的一部分。在发送密码或其他敏感信息时绝不要使用 GET ！POST 比 GET 更安全，因为参数不会被保存在浏览器历史或 web 服务器日志中。<br>GET的数据在 URL 中对所有人都是可见的。POST的数据不会显示在 URL 中。</p>
+<p>对于GET方式的请求，浏览器会把http header和data一并发送出去，服务器响应200（返回数据）；<br>而对于POST，浏览器先发送header，服务器响应100 continue，浏览器再发送data，服务器响应200 ok（返回数据）。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/MyBlog/tags/HTTP/" rel="tag"># HTTP</a>
+          
+            <a href="/MyBlog/tags/状态码/" rel="tag"># 状态码</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/MyBlog/2017/07/23/JavaScript事件/" rel="next" title="JavaScript事件">
+                <i class="fa fa-chevron-left"></i> JavaScript事件
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/MyBlog/2018/06/08/长连接-短连接-长轮询-短轮询/" rel="prev" title="长连接&短连接&长轮询&短轮询">
+                长连接&短连接&长轮询&短轮询 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Daisy</p>
+              <p class="site-description motion-element" itemprop="description">前端技术个人博客</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/MyBlog/archives/">
+              
+                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/MyBlog/categories/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/MyBlog/tags/index.html">
+                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/MyBlog/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP状态码"><span class="nav-number">1.</span> <span class="nav-text">HTTP状态码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#100-199信息性状态码"><span class="nav-number">1.0.1.</span> <span class="nav-text">100~199信息性状态码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#200-299成功状态码"><span class="nav-number">1.0.2.</span> <span class="nav-text">200~299成功状态码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#300-399重定向状态码"><span class="nav-number">1.0.3.</span> <span class="nav-text">300~399重定向状态码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#400-499客户端错误状态码"><span class="nav-number">1.0.4.</span> <span class="nav-text">400~499客户端错误状态码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#500-599服务器错误状态码"><span class="nav-number">1.0.5.</span> <span class="nav-text">500~599服务器错误状态码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP-请求方法"><span class="nav-number">2.</span> <span class="nav-text">HTTP 请求方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是-HTTP？"><span class="nav-number">2.0.1.</span> <span class="nav-text">什么是 HTTP？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#两种-HTTP-请求方法：GET-和-POST"><span class="nav-number">2.0.2.</span> <span class="nav-text">两种 HTTP 请求方法：GET 和 POST</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#GET-方法"><span class="nav-number">2.0.3.</span> <span class="nav-text">GET 方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#POST-方法"><span class="nav-number">2.0.4.</span> <span class="nav-text">POST 方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他请求方法："><span class="nav-number">2.0.5.</span> <span class="nav-text">其他请求方法：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GET-与-POST-区别："><span class="nav-number">3.</span> <span class="nav-text">GET 与 POST 区别：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Daisy</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/MyBlog/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/MyBlog/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/MyBlog/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/MyBlog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/MyBlog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/MyBlog/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/MyBlog/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/MyBlog/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/MyBlog/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/MyBlog/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/MyBlog/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

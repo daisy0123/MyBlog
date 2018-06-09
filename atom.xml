@@ -6,7 +6,7 @@
   <link href="/MyBlog/atom.xml" rel="self"/>
   
   <link href="https://qiuyuxiu.github.io/MyBlog/"/>
-  <updated>2018-06-08T11:21:20.422Z</updated>
+  <updated>2018-06-08T11:19:33.604Z</updated>
   <id>https://qiuyuxiu.github.io/MyBlog/</id>
   
   <author>
@@ -15,20 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>HTTP状态码与方法</title>
-    <link href="https://qiuyuxiu.github.io/MyBlog/2018/06/08/HTTP%E7%8A%B6%E6%80%81%E7%A0%81%E4%B8%8E%E6%96%B9%E6%B3%95/"/>
-    <id>https://qiuyuxiu.github.io/MyBlog/2018/06/08/HTTP状态码与方法/</id>
-    <published>2018-06-08T11:21:20.000Z</published>
-    <updated>2018-06-08T11:21:20.422Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
   
   <entry>
     <title>HTTP报文</title>
@@ -167,6 +153,34 @@
     
     </summary>
     
+    
+  </entry>
+  
+  <entry>
+    <title>HTTP状态码与方法</title>
+    <link href="https://qiuyuxiu.github.io/MyBlog/2017/08/08/HTTP%E7%8A%B6%E6%80%81%E7%A0%81%E4%B8%8E%E6%96%B9%E6%B3%95/"/>
+    <id>https://qiuyuxiu.github.io/MyBlog/2017/08/08/HTTP状态码与方法/</id>
+    <published>2017-08-08T08:21:20.000Z</published>
+    <updated>2018-06-09T14:45:04.118Z</updated>
+    
+    <content type="html"><![CDATA[<p>看了《HTTP权威指南》之后，整理些笔记。</p><h2 id="HTTP状态码"><a href="#HTTP状态码" class="headerlink" title="HTTP状态码"></a>HTTP状态码</h2><h4 id="100-199信息性状态码"><a href="#100-199信息性状态码" class="headerlink" title="100~199信息性状态码"></a>100~199信息性状态码</h4><p>100：continue 说明收到了请求的初始部分，请客户端继续。发送了这个状态码之后，服务器在收到请求之后必须响应。<br>101：Switching Protocols 说明服务器正在根据客户端的指定，将协议切换成update首部所列的协议。</p><h4 id="200-299成功状态码"><a href="#200-299成功状态码" class="headerlink" title="200~299成功状态码"></a>200~299成功状态码</h4><p>200：OK 请求没问题，实体的主体部分包含了所请求的资源。<br>201：Create 用于创建服务器对象的请求（比如PUT）。响应的实体主体部分中应该包含各种引用了已创建的资源的URL，location首部包含的则是最具体的引用。<br>202：Accepted 请求已被接受，但服务器还未对其执行任何动作，不能保证服务器会完成这个请求。</p><h4 id="300-399重定向状态码"><a href="#300-399重定向状态码" class="headerlink" title="300~399重定向状态码"></a>300~399重定向状态码</h4><p>300：Multiple Choices 客户端请求一个实际指向多个资源的URL时会返回这个状态码。<br>301 Moved Permanently 在请求的URL已被移除时使用，相应的location首部中应该包含资源现在所处的URL。<br>302 Found 与301状态码类似，但是，客户端应该使用location首部给出的URL来临时定位资源，将来的请求仍应使用老的URL。<br>303 see Other 告知客户端应该用另一个URL来获取资源。新的URL位于响应报文的location首部，其主要目的是允许post请求的响应将客户端定向到某个资源。<br>304 Not Modified 请求的资源未修改过。<br>307 Temporary 与301类似，但客户端应该使用location首部给出的URL来临时定位资源。</p><h4 id="400-499客户端错误状态码"><a href="#400-499客户端错误状态码" class="headerlink" title="400~499客户端错误状态码"></a>400~499客户端错误状态码</h4><p>400：Bad Request 用于告知客户端它发送了一个错误的请求<br>401：无权限<br>403:Forbidden 请求被服务器拒绝了。可查看实体的主体部分来知道为何。<br>404：Not Found 服务器无法找到所请求的资源</p><h4 id="500-599服务器错误状态码"><a href="#500-599服务器错误状态码" class="headerlink" title="500~599服务器错误状态码"></a>500~599服务器错误状态码</h4><p>500：Internal Server Error 服务器遇到一个妨碍它提供服务的错误<br>501：Not Implemented 客户端发起请求超出服务器的能力范围<br>502：Bad Gateway<br>503: Service Unavailable 说明服务器现在无法为请求提供服务，但将来可以</p><p>详细见W3school:<a href="http://www.w3school.com.cn/tags/html_ref_httpmessages.asp" target="_blank" rel="noopener">http://www.w3school.com.cn/tags/html_ref_httpmessages.asp</a></p><h2 id="HTTP-请求方法"><a href="#HTTP-请求方法" class="headerlink" title="HTTP 请求方法"></a>HTTP 请求方法</h2><h4 id="什么是-HTTP？"><a href="#什么是-HTTP？" class="headerlink" title="什么是 HTTP？"></a>什么是 HTTP？</h4><p>超文本传输协议（HTTP）的设计目的是保证客户机与服务器之间的通信。<br>HTTP 的工作方式是客户机与服务器之间的请求-应答协议。<br>web 浏览器可能是客户端，而计算机上的网络应用程序也可能作为服务器端。</p><h4 id="两种-HTTP-请求方法：GET-和-POST"><a href="#两种-HTTP-请求方法：GET-和-POST" class="headerlink" title="两种 HTTP 请求方法：GET 和 POST"></a>两种 HTTP 请求方法：GET 和 POST</h4><p>在客户机和服务器之间进行请求-响应时，两种最常被用到的方法是：GET 和 POST。<br>GET - 从指定的资源请求数据。<br>POST - 向指定的资源提交要被处理的数据</p><h4 id="GET-方法"><a href="#GET-方法" class="headerlink" title="GET 方法"></a>GET 方法</h4><p>查询字符串（名称/值对）是在 GET 请求的 URL 中发送的：<br>GET 请求可被缓存<br>GET 请求保留在浏览器历史记录中<br>GET 请求可被收藏为书签<br>GET 请求不应在处理敏感数据时使用<br>GET 请求有长度限制<br>GET 请求只应当用于取回数据</p><h4 id="POST-方法"><a href="#POST-方法" class="headerlink" title="POST 方法"></a>POST 方法</h4><p>查询字符串（名称/值对）是在 POST 请求的 HTTP 消息主体中发送的：<br>POST 请求不会被缓存<br>POST 请求不会保留在浏览器历史记录中<br>POST 不能被收藏为书签<br>POST 请求对数据长度没有要求</p><h4 id="其他请求方法："><a href="#其他请求方法：" class="headerlink" title="其他请求方法："></a>其他请求方法：</h4><p>HEAD 与 GET 相同，但只返回 HTTP 报头，不返回文档主体。<br>PUT 上传指定的 URI 表示。<br>DELETE 删除指定资源。<br>OPTIONS 返回服务器支持的 HTTP 方法。<br>CONNECT 把请求连接转换到透明的 TCP/IP 通道</p><h2 id="GET-与-POST-区别："><a href="#GET-与-POST-区别：" class="headerlink" title="GET 与 POST 区别："></a>GET 与 POST 区别：</h2><p>GET后退按钮/刷新无害，POST数据会被重新提交（浏览器应该告知用户数据会被重新提交）。<br>GET书签可收藏，POST为书签不可收藏。GET能被缓存，POST不能缓存 。<br>GET编码类型application/x-www-form-url，POST编码类型encodedapplication/x-www-form-urlencoded 或 multipart/form-data。为二进制数据使用多重编码。<br>GET历史参数保留在浏览器历史中。POST参数不会保存在浏览器历史中。<br>GET对数据长度有限制，当发送数据时，GET 方法向 URL 添加数据；URL 的长度是受限制的（URL 的最大长度是 2048 个字符）。POST无限制。<br>GET只允许 ASCII 字符。POST没有限制。也允许二进制数据。<br>与 POST 相比，GET 的安全性较差，因为所发送的数据是 URL 的一部分。在发送密码或其他敏感信息时绝不要使用 GET ！POST 比 GET 更安全，因为参数不会被保存在浏览器历史或 web 服务器日志中。<br>GET的数据在 URL 中对所有人都是可见的。POST的数据不会显示在 URL 中。</p><p>对于GET方式的请求，浏览器会把http header和data一并发送出去，服务器响应200（返回数据）；<br>而对于POST，浏览器先发送header，服务器响应100 continue，浏览器再发送data，服务器响应200 ok（返回数据）。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;看了《HTTP权威指南》之后，整理些笔记。&lt;/p&gt;
+&lt;h2 id=&quot;HTTP状态码&quot;&gt;&lt;a href=&quot;#HTTP状态码&quot; class=&quot;headerlink&quot; title=&quot;HTTP状态码&quot;&gt;&lt;/a&gt;HTTP状态码&lt;/h2&gt;&lt;h4 id=&quot;100-199信息性状态码&quot;&gt;&lt;
+      
+    
+    </summary>
+    
+      <category term="HTTP" scheme="https://qiuyuxiu.github.io/MyBlog/categories/HTTP/"/>
+    
+    
+      <category term="HTTP" scheme="https://qiuyuxiu.github.io/MyBlog/tags/HTTP/"/>
+    
+      <category term="状态码" scheme="https://qiuyuxiu.github.io/MyBlog/tags/%E7%8A%B6%E6%80%81%E7%A0%81/"/>
     
   </entry>
   
