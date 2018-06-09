@@ -6,7 +6,7 @@
   <link href="/MyBlog/atom.xml" rel="self"/>
   
   <link href="https://qiuyuxiu.github.io/MyBlog/"/>
-  <updated>2018-06-08T11:17:33.349Z</updated>
+  <updated>2018-06-08T08:52:58.018Z</updated>
   <id>https://qiuyuxiu.github.io/MyBlog/</id>
   
   <author>
@@ -15,34 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>html知识点</title>
-    <link href="https://qiuyuxiu.github.io/MyBlog/2018/06/08/html%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
-    <id>https://qiuyuxiu.github.io/MyBlog/2018/06/08/html知识点/</id>
-    <published>2018-06-08T11:17:33.000Z</published>
-    <updated>2018-06-08T11:17:33.349Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>内存泄漏问题</title>
-    <link href="https://qiuyuxiu.github.io/MyBlog/2018/06/08/%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E9%97%AE%E9%A2%98/"/>
-    <id>https://qiuyuxiu.github.io/MyBlog/2018/06/08/内存泄漏问题/</id>
-    <published>2018-06-08T08:53:07.000Z</published>
-    <updated>2018-06-08T08:53:07.783Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
   
   <entry>
     <title>手写promise</title>
@@ -97,6 +69,31 @@
     
     </summary>
     
+    
+  </entry>
+  
+  <entry>
+    <title>内存泄漏问题</title>
+    <link href="https://qiuyuxiu.github.io/MyBlog/2018/03/01/%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E9%97%AE%E9%A2%98/"/>
+    <id>https://qiuyuxiu.github.io/MyBlog/2018/03/01/内存泄漏问题/</id>
+    <published>2018-03-01T08:53:07.000Z</published>
+    <updated>2018-06-09T15:31:00.835Z</updated>
+    
+    <content type="html"><![CDATA[<p>借鉴于：<br><a href="http://www.cnblogs.com/chuaWeb/p/5196330.html" target="_blank" rel="noopener">前端内存泄漏探讨</a><br><a href="https://www.jb51.net/article/75292.htm" target="_blank" rel="noopener">垃圾回收机制与内存管理</a></p><ol><li>在 IE7、IE8 中，如果循环引用中的任何对象是 DOM 节点或者 ActiveX 对象，比如var a = document.getElementById(“#a”)，垃圾收集系统则不会发现它们之间的循环关系,因为IE的DOM回收机制和JS回收机制不是同一个。js回收机制分两种：标记清除和引用计数，引用计数对循环引用的垃圾回收会出现内存泄漏，而IE的DOM回收机制便是采用引用计数的。IE9+并不存在循环引用导致Dom内存泄露问题，可能是微软做了优化，或者Dom的回收方式已经改变。</li><li>标记清除:<br>js中最常用的垃圾回收方式就是标记清除。当变量进入环境时，例如，在函数中声明一个变量，就将这个变量标记为“进入环境”。从逻辑上讲，永远不能释放进入环境的变量所占用的内存，因为只要执行流进入相应的环境，就可能会用到它们。而当变量离开环境时，则将其标记为“离开环境”。</li><li>引用计数<br>引用计数的含义是跟踪记录每个值被引用的次数。当声明了一个变量并将一个引用类型值赋给该变量时，则这个值的引用次数就是1。如果同一个值又被赋给另一个变量，则该值的引用次数加1。相反，如果包含对这个值引用的变量又取得了另外一个值，则这个值的引用次数减1。当这个值的引用次数变成0时，则说明没有办法再访问这个值了，因而就可以将其占用的内存空间回收回来。这样，当垃圾回收器下次再运行时，它就会释放那些引用次数为0的值所占用的内存。</li><li>垃圾回收机制—GC<br>Javascript具有自动垃圾回收机制(GC:Garbage Collecation)，也就是说，执行环境会负责管理代码执行过程中使用的内存。<br>原理：垃圾收集器会定期（周期性）找出那些不在继续使用的变量，然后释放其内存。<br>JavaScript垃圾回收的机制很简单：找出不再使用的变量，然后释放掉其占用的内存，但是这个过程不是实时的，因为其开销比较大，所以垃圾回收器会按照固定的时间间隔周期性的执行。</li><li>内存泄露的形式：<br>循环引用（Circular References） - 当 IE 浏览器的 COM 组件与脚本引擎对象之间相互引用时，将导致内存泄露，这是最常见的形式。<br>闭包（Closures） - 闭包是循环引用的特殊形式，也是目前 Web 架构中使用最多的一种语言特性。闭包很容易被发现，因为它们依赖于特定的语言关键字，可以通过简单的搜索来查找。<br>页面交叉泄露（Cross-Page Leaks） - 页面交叉泄漏其实是一种较小的泄漏，它通常在你浏览过程中，由于内部对象 book-keeping 引起。我们将讨论 DOM 插入顺序问题，在示例中你将发现只需要微小的改动就可以避免 book-keeping 对象的产生。<br>伪泄露（Pseudo-Leaks） — 严格来说并不算真正的内存泄露，不过如果你不了解它，你将会在可用内存越来越少时非常懊恼。为了演示这个问题，我们将通过重写 script 元素中的内容来引发大量内存的“泄漏”。</li><li>es6中weakSet，weakMap可以解决内存泄露问题，弱引用。</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;借鉴于：&lt;br&gt;&lt;a href=&quot;http://www.cnblogs.com/chuaWeb/p/5196330.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;前端内存泄漏探讨&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://www.jb51.
+      
+    
+    </summary>
+    
+      <category term="内存泄漏" scheme="https://qiuyuxiu.github.io/MyBlog/categories/%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F/"/>
+    
+    
+      <category term="内存泄漏" scheme="https://qiuyuxiu.github.io/MyBlog/tags/%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F/"/>
     
   </entry>
   
@@ -473,6 +470,33 @@
       <category term="JavaScript" scheme="https://qiuyuxiu.github.io/MyBlog/tags/JavaScript/"/>
     
       <category term="面向对象" scheme="https://qiuyuxiu.github.io/MyBlog/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScript 基本包装方法</title>
+    <link href="https://qiuyuxiu.github.io/MyBlog/2017/06/16/JavaScript-%E5%9F%BA%E6%9C%AC%E5%8C%85%E8%A3%85%E6%96%B9%E6%B3%95/"/>
+    <id>https://qiuyuxiu.github.io/MyBlog/2017/06/16/JavaScript-基本包装方法/</id>
+    <published>2017-06-16T11:23:59.000Z</published>
+    <updated>2018-06-09T07:11:33.622Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="trim"><a href="#trim" class="headerlink" title="trim()"></a>trim()</h2><p>trim() 方法删除前置及后缀的所有空格。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var stringValue=&quot; hello wolrd   &quot;;</span><br><span class="line">var trimmedStringValue=stringValue.trim();</span><br><span class="line">alert(stringValue);// hello wolrd</span><br><span class="line">alert(trimmedStringValue);//hello world</span><br></pre></td></tr></table></figure></p><p>字符串转换的方法：toLowerCase() 、toLocaleLowerCase() 、toUpperCase() 、toLocaleUpperCase()</p><h2 id="split"><a href="#split" class="headerlink" title="split()"></a>split()</h2><p>split()分隔字符串。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var colorText=&quot;red,blue,green,yellow&quot;;</span><br><span class="line">var colors1=colorText.split(&quot;，&quot;);</span><br><span class="line">var colors2=colorText.split(&quot;,&quot;,2);</span><br><span class="line">document.write(colors1);//red,blue,green,yellow</span><br><span class="line">document.write(&quot;&lt;br&gt;&quot;);</span><br><span class="line">document.write(colors2);//red,blue</span><br><span class="line">localCompare() 比较两个字符串。</span><br><span class="line">fromCharCode() 方法将字符编码转换成一个字符串。</span><br></pre></td></tr></table></figure></p><h2 id="Math-对象"><a href="#Math-对象" class="headerlink" title="Math()对象"></a>Math()对象</h2><p>min() 和 max()<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var max=Math.max(3,54,32,16);</span><br><span class="line">var min=Math.min(3,54,32,16);</span><br><span class="line">alert(max);//54</span><br><span class="line">alert(min);//3</span><br></pre></td></tr></table></figure></p><p>舍入方法：<br>Math.ceil() 执行向上舍入<br>Math.floor() 执行向下舍入<br>Math.round() 执行标准舍入，四舍五入<br>random()方法返回随机数：值=Math.floor(Math.random()*可能值的总数+第一个可能的值)。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;trim&quot;&gt;&lt;a href=&quot;#trim&quot; class=&quot;headerlink&quot; title=&quot;trim()&quot;&gt;&lt;/a&gt;trim()&lt;/h2&gt;&lt;p&gt;trim() 方法删除前置及后缀的所有空格。&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;
+      
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="https://qiuyuxiu.github.io/MyBlog/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript" scheme="https://qiuyuxiu.github.io/MyBlog/tags/JavaScript/"/>
+    
+      <category term="包装方法" scheme="https://qiuyuxiu.github.io/MyBlog/tags/%E5%8C%85%E8%A3%85%E6%96%B9%E6%B3%95/"/>
     
   </entry>
   
