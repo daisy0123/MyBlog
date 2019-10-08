@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/MyBlog/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/MyBlog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/MyBlog/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/MyBlog/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/MyBlog/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/MyBlog/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/MyBlog/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="ES6," />
+
+
+
+
+
+  <link rel="alternate" href="/MyBlog/atom.xml" title="个人博客" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="es6解构可以快速取得数组或对象当中的元素或属性。 数组解构赋值1234567891011const array = [&apos;test&apos;, 2, false];// es5const a = array[0], b = array[1], c = array[2];// es6解构赋值const [a, b, c] = array;console.log(a); // testconsole.log(">
+<meta name="keywords" content="ES6">
+<meta property="og:type" content="article">
+<meta property="og:title" content="es6解构">
+<meta property="og:url" content="https://qiuyuxiu.github.io/MyBlog/2019/10/08/es6解构/index.html">
+<meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="es6解构可以快速取得数组或对象当中的元素或属性。 数组解构赋值1234567891011const array = [&apos;test&apos;, 2, false];// es5const a = array[0], b = array[1], c = array[2];// es6解构赋值const [a, b, c] = array;console.log(a); // testconsole.log(">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-10-08T12:10:05.200Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="es6解构">
+<meta name="twitter:description" content="es6解构可以快速取得数组或对象当中的元素或属性。 数组解构赋值1234567891011const array = [&apos;test&apos;, 2, false];// es5const a = array[0], b = array[1], c = array[2];// es6解构赋值const [a, b, c] = array;console.log(a); // testconsole.log(">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/MyBlog/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://qiuyuxiu.github.io/MyBlog/2019/10/08/es6解构/"/>
+
+
+
+
+
+  <title>es6解构 | 个人博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/MyBlog/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">有关于前端学习的个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/MyBlog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/MyBlog/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/MyBlog/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/MyBlog/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://qiuyuxiu.github.io/MyBlog/MyBlog/2019/10/08/es6解构/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Daisy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/MyBlog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">es6解构</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-08T19:41:43+08:00">
+                2019-10-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/MyBlog/categories/ES6/" itemprop="url" rel="index">
+                    <span itemprop="name">ES6</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>es6解构可以快速取得数组或对象当中的元素或属性。</p>
+<h6 id="数组解构赋值"><a href="#数组解构赋值" class="headerlink" title="数组解构赋值"></a>数组解构赋值</h6><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> array = [<span class="string">'test'</span>, <span class="number">2</span>, <span class="literal">false</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// es5</span></span><br><span class="line"><span class="keyword">const</span> a = array[<span class="number">0</span>], b = array[<span class="number">1</span>], c = array[<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// es6解构赋值</span></span><br><span class="line"><span class="keyword">const</span> [a, b, c] = array;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a); <span class="comment">// test</span></span><br><span class="line"><span class="built_in">console</span>.log(b); <span class="comment">// 2</span></span><br><span class="line"><span class="built_in">console</span>.log(c); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<h6 id="嵌套数组解构"><a href="#嵌套数组解构" class="headerlink" title="嵌套数组解构"></a>嵌套数组解构</h6><ul>
+<li>赋值和解构格式一一对应<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> array = [[<span class="number">1</span>, [<span class="number">2</span>, <span class="number">3</span>]], <span class="number">4</span>];</span><br><span class="line"><span class="keyword">const</span> [[a, [b, c]], d] = array;</span><br><span class="line"><span class="built_in">console</span>.log(a); <span class="comment">// 1</span></span><br><span class="line"><span class="built_in">console</span>.log(b); <span class="comment">// 2</span></span><br><span class="line"><span class="built_in">console</span>.log(c); <span class="comment">// 3</span></span><br><span class="line"><span class="built_in">console</span>.log(d); <span class="comment">// 4</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h6 id="函数传参解构"><a href="#函数传参解构" class="headerlink" title="函数传参解构"></a>函数传参解构</h6><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> array = [<span class="string">'test'</span>, <span class="number">2</span>, <span class="literal">false</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> func = <span class="function">(<span class="params">[args1, args2, args3]</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(args1); <span class="comment">// test</span></span><br><span class="line">    <span class="built_in">console</span>.log(args2); <span class="comment">// 2</span></span><br><span class="line">    <span class="built_in">console</span>.log(args3); <span class="comment">// false</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">func(array);</span><br></pre></td></tr></table></figure>
+<h6 id="for循环解构"><a href="#for循环解构" class="headerlink" title="for循环解构"></a>for循环解构</h6><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> array = [[<span class="number">1</span>, <span class="number">2</span>], [<span class="number">11</span>, <span class="number">12</span>], [<span class="number">21</span>, <span class="number">22</span>]];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> [a, b] <span class="keyword">of</span> array) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">    <span class="built_in">console</span>.log(b);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 1 2 11 12 21 22</span></span><br></pre></td></tr></table></figure>
+<h6 id="对象赋值解构"><a href="#对象赋值解构" class="headerlink" title="对象赋值解构"></a>对象赋值解构</h6><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> animal = &#123;</span><br><span class="line">    name: <span class="string">'dog'</span>,</span><br><span class="line">    sex: <span class="string">'male'</span>,</span><br><span class="line">    age: <span class="number">12</span>,</span><br><span class="line">    like: [<span class="string">'apple'</span>, <span class="string">'pair'</span>],</span><br><span class="line">    son: &#123;</span><br><span class="line">      sonName: <span class="string">'dog1'</span>,</span><br><span class="line">      sonAge: <span class="number">1</span>,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> &#123;name, sex, age, like&#125; = animal; <span class="comment">// dog male 12 ['apple', 'pair']</span></span><br><span class="line"><span class="comment">// 变量名与对象属性名不一致</span></span><br><span class="line"><span class="keyword">const</span> &#123;<span class="attr">name</span>: name1, <span class="attr">sex</span>: sex1, <span class="attr">age</span>: age1, <span class="attr">like</span>: like1&#125; = animal; <span class="comment">// dog male 2 ['apple', 'pair']</span></span><br><span class="line"><span class="comment">// func 传参</span></span><br><span class="line"><span class="keyword">const</span> func = <span class="function">(<span class="params">&#123;name, sex, like&#125;</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(like);</span><br><span class="line">&#125;;</span><br><span class="line">func(animal);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 嵌套对象解构</span></span><br><span class="line"><span class="keyword">const</span> &#123;name, <span class="attr">son</span>: &#123;sonName, sonAge&#125;&#125; = animal;</span><br><span class="line"><span class="comment">// 对嵌套数组不支持</span></span><br></pre></td></tr></table></figure>
+<h6 id="循环解构对象"><a href="#循环解构对象" class="headerlink" title="循环解构对象"></a>循环解构对象</h6><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> array = [&#123;<span class="attr">name</span>: <span class="string">'chris'</span>, <span class="attr">age</span>: <span class="number">26</span>&#125;, &#123;<span class="attr">name</span>: <span class="string">'jack'</span>,    <span class="attr">age</span>: <span class="number">27</span>&#125;, &#123;<span class="attr">name</span>: <span class="string">'peter'</span>,<span class="attr">age</span>: <span class="number">28</span>&#125;];</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> &#123;age, name&#125; <span class="keyword">of</span> array) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(name + <span class="string">' '</span> + age);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">array.map(<span class="function">(<span class="params">&#123;name, age&#125;</span>) =&gt;</span> &#123;<span class="built_in">console</span>.log(name + <span class="string">' '</span> + age)&#125;)</span><br></pre></td></tr></table></figure>
+<h6 id="变量互换"><a href="#变量互换" class="headerlink" title="变量互换"></a>变量互换</h6><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> x = <span class="number">1</span>, y = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">const</span> [x, y] = [y, x];</span><br><span class="line"><span class="built_in">console</span>.log(x); <span class="comment">// 2</span></span><br><span class="line"><span class="built_in">console</span>.log(y); <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+<h6 id="字符串解构"><a href="#字符串解构" class="headerlink" title="字符串解构"></a>字符串解构</h6><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> str = <span class="string">'test'</span>;</span><br><span class="line"><span class="keyword">const</span> [a, b, c, d] = str;</span><br><span class="line"><span class="built_in">console</span>.log(a);<span class="comment">//t</span></span><br><span class="line"><span class="built_in">console</span>.log(b);<span class="comment">//e</span></span><br><span class="line"><span class="built_in">console</span>.log(c);<span class="comment">//s</span></span><br><span class="line"><span class="built_in">console</span>.log(d);<span class="comment">//t</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/MyBlog/tags/ES6/" rel="tag"># ES6</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/MyBlog/2018/12/15/URL编码解码/" rel="next" title="URL编码解码">
+                <i class="fa fa-chevron-left"></i> URL编码解码
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Daisy</p>
+              <p class="site-description motion-element" itemprop="description">前端技术个人博客</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/MyBlog/archives/">
+              
+                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/MyBlog/categories/index.html">
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/MyBlog/tags/index.html">
+                  <span class="site-state-item-count">49</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/MyBlog/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#数组解构赋值"><span class="nav-number">1.</span> <span class="nav-text">数组解构赋值</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#嵌套数组解构"><span class="nav-number">2.</span> <span class="nav-text">嵌套数组解构</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#函数传参解构"><span class="nav-number">3.</span> <span class="nav-text">函数传参解构</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#for循环解构"><span class="nav-number">4.</span> <span class="nav-text">for循环解构</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#对象赋值解构"><span class="nav-number">5.</span> <span class="nav-text">对象赋值解构</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#循环解构对象"><span class="nav-number">6.</span> <span class="nav-text">循环解构对象</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#变量互换"><span class="nav-number">7.</span> <span class="nav-text">变量互换</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#字符串解构"><span class="nav-number">8.</span> <span class="nav-text">字符串解构</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Daisy</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/MyBlog/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/MyBlog/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/MyBlog/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/MyBlog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/MyBlog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/MyBlog/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/MyBlog/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/MyBlog/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/MyBlog/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/MyBlog/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/MyBlog/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
