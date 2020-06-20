@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="####前提我所做系统是基于vue+view-design开发的，对于ie浏览器的兼容性比较差，所以需要做些额外的配置兼容下ie浏览器。 ####所做的兼容工作  Vue CLI 3初始化的项目，构建时会根据package.json中的browserslist配置自动检测需要转译的语言特性，为构建代码转译JavaScript，并为CSS添加浏览器前缀，通常只需要修改browserslist即可兼容">
+<meta name="description" content="前提我所做系统是基于vue+view-design开发的，对于ie浏览器的兼容性比较差，所以需要做些额外的配置兼容下ie浏览器。 所做的兼容工作 Vue CLI 3初始化的项目，构建时会根据package.json中的browserslist配置自动检测需要转译的语言特性，为构建代码转译JavaScript，并为CSS添加浏览器前缀，通常只需要修改browserslist即可兼容目标浏览器。123">
 <meta name="keywords" content="vue,兼容性">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue-cli3项目IE浏览器兼容问题">
 <meta property="og:url" content="https://qiuyuxiu.github.io/MyBlog/2019/02/01/vue-cli3项目IE浏览器兼容问题/index.html">
 <meta property="og:site_name" content="个人博客">
-<meta property="og:description" content="####前提我所做系统是基于vue+view-design开发的，对于ie浏览器的兼容性比较差，所以需要做些额外的配置兼容下ie浏览器。 ####所做的兼容工作  Vue CLI 3初始化的项目，构建时会根据package.json中的browserslist配置自动检测需要转译的语言特性，为构建代码转译JavaScript，并为CSS添加浏览器前缀，通常只需要修改browserslist即可兼容">
+<meta property="og:description" content="前提我所做系统是基于vue+view-design开发的，对于ie浏览器的兼容性比较差，所以需要做些额外的配置兼容下ie浏览器。 所做的兼容工作 Vue CLI 3初始化的项目，构建时会根据package.json中的browserslist配置自动检测需要转译的语言特性，为构建代码转译JavaScript，并为CSS添加浏览器前缀，通常只需要修改browserslist即可兼容目标浏览器。123">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-06-20T07:53:18.843Z">
+<meta property="og:updated_time" content="2020-06-20T08:01:52.907Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue-cli3项目IE浏览器兼容问题">
-<meta name="twitter:description" content="####前提我所做系统是基于vue+view-design开发的，对于ie浏览器的兼容性比较差，所以需要做些额外的配置兼容下ie浏览器。 ####所做的兼容工作  Vue CLI 3初始化的项目，构建时会根据package.json中的browserslist配置自动检测需要转译的语言特性，为构建代码转译JavaScript，并为CSS添加浏览器前缀，通常只需要修改browserslist即可兼容">
+<meta name="twitter:description" content="前提我所做系统是基于vue+view-design开发的，对于ie浏览器的兼容性比较差，所以需要做些额外的配置兼容下ie浏览器。 所做的兼容工作 Vue CLI 3初始化的项目，构建时会根据package.json中的browserslist配置自动检测需要转译的语言特性，为构建代码转译JavaScript，并为CSS添加浏览器前缀，通常只需要修改browserslist即可兼容目标浏览器。123">
 
 
 
@@ -344,9 +344,8 @@
       
 
       
-        <p>####前提<br>我所做系统是基于vue+view-design开发的，对于ie浏览器的兼容性比较差，所以需要做些额外的配置兼容下ie浏览器。</p>
-<p>####所做的兼容工作</p>
-<ol>
+        <h4 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h4><p>我所做系统是基于vue+view-design开发的，对于ie浏览器的兼容性比较差，所以需要做些额外的配置兼容下ie浏览器。</p>
+<h4 id="所做的兼容工作"><a href="#所做的兼容工作" class="headerlink" title="所做的兼容工作"></a>所做的兼容工作</h4><ol>
 <li>Vue CLI 3初始化的项目，构建时会根据package.json中的browserslist配置自动检测需要转译的语言特性，为构建代码转译JavaScript，并为CSS添加浏览器前缀，通常只需要修改browserslist即可兼容目标浏览器。<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"browserslist"</span>: [</span><br><span class="line">   <span class="string">"&gt; 1%"</span>, <span class="comment">//全球大于1%的浏览器</span></span><br><span class="line">   <span class="string">"last 4 versions"</span>, <span class="comment">//每个浏览器最近的两个版本</span></span><br><span class="line">   <span class="string">"not ie &lt;= 8"</span> <span class="comment">// ie浏览器不小于等于8</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
@@ -465,8 +464,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -533,6 +541,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#前提"><span class="nav-number">1.</span> <span class="nav-text">前提</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#所做的兼容工作"><span class="nav-number">2.</span> <span class="nav-text">所做的兼容工作</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
