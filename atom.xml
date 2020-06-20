@@ -6,7 +6,7 @@
   <link href="/MyBlog/atom.xml" rel="self"/>
   
   <link href="https://qiuyuxiu.github.io/MyBlog/"/>
-  <updated>2020-06-20T06:52:51.414Z</updated>
+  <updated>2020-06-20T07:27:18.701Z</updated>
   <id>https://qiuyuxiu.github.io/MyBlog/</id>
   
   <author>
@@ -18,15 +18,19 @@
   
   <entry>
     <title>BI可视化配表开发记录</title>
-    <link href="https://qiuyuxiu.github.io/MyBlog/2020/06/20/BI%E5%8F%AF%E8%A7%86%E5%8C%96%E9%85%8D%E8%A1%A8%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/"/>
-    <id>https://qiuyuxiu.github.io/MyBlog/2020/06/20/BI可视化配表开发记录/</id>
-    <published>2020-06-20T06:52:51.000Z</published>
-    <updated>2020-06-20T06:52:51.414Z</updated>
+    <link href="https://qiuyuxiu.github.io/MyBlog/2019/02/01/BI%E5%8F%AF%E8%A7%86%E5%8C%96%E9%85%8D%E8%A1%A8%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/"/>
+    <id>https://qiuyuxiu.github.io/MyBlog/2019/02/01/BI可视化配表开发记录/</id>
+    <published>2019-02-01T06:52:51.000Z</published>
+    <updated>2020-06-20T07:27:18.701Z</updated>
     
     <summary type="html">
     
     </summary>
     
+      <category term="可视化报表" scheme="https://qiuyuxiu.github.io/MyBlog/categories/%E5%8F%AF%E8%A7%86%E5%8C%96%E6%8A%A5%E8%A1%A8/"/>
+    
+    
+      <category term="可视化报表" scheme="https://qiuyuxiu.github.io/MyBlog/tags/%E5%8F%AF%E8%A7%86%E5%8C%96%E6%8A%A5%E8%A1%A8/"/>
     
   </entry>
   
