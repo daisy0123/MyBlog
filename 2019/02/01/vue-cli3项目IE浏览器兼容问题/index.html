@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/MyBlog/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/MyBlog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/MyBlog/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/MyBlog/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/MyBlog/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/MyBlog/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/MyBlog/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="vue,兼容性," />
+
+
+
+
+
+  <link rel="alternate" href="/MyBlog/atom.xml" title="个人博客" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="####前提我所做系统是基于vue+view-design开发的，对于ie浏览器的兼容性比较差，所以需要做些额外的配置兼容下ie浏览器。 ####所做的兼容工作  Vue CLI 3初始化的项目，构建时会根据package.json中的browserslist配置自动检测需要转译的语言特性，为构建代码转译JavaScript，并为CSS添加浏览器前缀，通常只需要修改browserslist即可兼容">
+<meta name="keywords" content="vue,兼容性">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue-cli3项目IE浏览器兼容问题">
+<meta property="og:url" content="https://qiuyuxiu.github.io/MyBlog/2019/02/01/vue-cli3项目IE浏览器兼容问题/index.html">
+<meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="####前提我所做系统是基于vue+view-design开发的，对于ie浏览器的兼容性比较差，所以需要做些额外的配置兼容下ie浏览器。 ####所做的兼容工作  Vue CLI 3初始化的项目，构建时会根据package.json中的browserslist配置自动检测需要转译的语言特性，为构建代码转译JavaScript，并为CSS添加浏览器前缀，通常只需要修改browserslist即可兼容">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-06-20T07:53:18.843Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vue-cli3项目IE浏览器兼容问题">
+<meta name="twitter:description" content="####前提我所做系统是基于vue+view-design开发的，对于ie浏览器的兼容性比较差，所以需要做些额外的配置兼容下ie浏览器。 ####所做的兼容工作  Vue CLI 3初始化的项目，构建时会根据package.json中的browserslist配置自动检测需要转译的语言特性，为构建代码转译JavaScript，并为CSS添加浏览器前缀，通常只需要修改browserslist即可兼容">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/MyBlog/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://qiuyuxiu.github.io/MyBlog/2019/02/01/vue-cli3项目IE浏览器兼容问题/"/>
+
+
+
+
+
+  <title>vue-cli3项目IE浏览器兼容问题 | 个人博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/MyBlog/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">有关于前端学习的个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/MyBlog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/MyBlog/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/MyBlog/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/MyBlog/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://qiuyuxiu.github.io/MyBlog/MyBlog/2019/02/01/vue-cli3项目IE浏览器兼容问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Daisy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/MyBlog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">vue-cli3项目IE浏览器兼容问题</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-01T15:39:17+08:00">
+                2019-02-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/MyBlog/categories/vue/" itemprop="url" rel="index">
+                    <span itemprop="name">vue</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>####前提<br>我所做系统是基于vue+view-design开发的，对于ie浏览器的兼容性比较差，所以需要做些额外的配置兼容下ie浏览器。</p>
+<p>####所做的兼容工作</p>
+<ol>
+<li>Vue CLI 3初始化的项目，构建时会根据package.json中的browserslist配置自动检测需要转译的语言特性，为构建代码转译JavaScript，并为CSS添加浏览器前缀，通常只需要修改browserslist即可兼容目标浏览器。<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"browserslist"</span>: [</span><br><span class="line">   <span class="string">"&gt; 1%"</span>, <span class="comment">//全球大于1%的浏览器</span></span><br><span class="line">   <span class="string">"last 4 versions"</span>, <span class="comment">//每个浏览器最近的两个版本</span></span><br><span class="line">   <span class="string">"not ie &lt;= 8"</span> <span class="comment">// ie浏览器不小于等于8</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>上面的配置是仅对源码(src/)有效，对依赖包无效。<br>对于配置说明，可见：<a href="https://github.com/browserslist/browserslist" target="_blank" rel="noopener">https://github.com/browserslist/browserslist</a></p>
+<ol start="2">
+<li>发现ie报错 Expected identifier, string, or number，查阅资料发现对象末尾逗号需去掉，所以我配置了下eslints规则。<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"comma-dangle"</span>: [</span><br><span class="line">  <span class="string">"error"</span>,</span><br><span class="line">  <span class="string">"never"</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>然后在IDE全局reformat code。<br>这样把系统的src目录下的文件和配置文件的末尾逗号去除了。// 后面发现该步骤可不用，因为在第一步的时候对src已做了兼容，对于node_modules的去除不了。</p>
+<ol start="3">
+<li>如第二点所说，仍旧报错 Expected identifier, string, or number。对依赖包的兼容还需配置@babel/preset-env。<br>具体可见<a href="https://babeljs.io/docs/en/babel-preset-env" target="_blank" rel="noopener">https://babeljs.io/docs/en/babel-preset-env</a></li>
+</ol>
+<p>一个默认的VueCLI项目会使用 @vue/babel-preset-app，它通过 @babel/preset-env 和 browserslist 配置来决定项目需要的 polyfill。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">presets: [</span><br><span class="line"> [<span class="string">'@babel/env'</span>, &#123;</span><br><span class="line">   <span class="string">'modules'</span>: <span class="literal">false</span>,</span><br><span class="line">   <span class="string">'useBuiltIns'</span>: <span class="string">'entry'</span></span><br><span class="line"> &#125;]</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
+<p>useBuiltIns 有三个设置选项：</p>
+<ul>
+<li>false：不做任何操作</li>
+<li>entry：根据浏览器版本的支持，将 polyfill 需求拆分引入，仅引入有浏览器不支持的polyfill</li>
+<li>usage：检测代码中 ES6/7/8 等的使用情况，仅仅加载代码中用到的 polyfill  </li>
+</ul>
+<ol start="4">
+<li>ie浏览器报错不支持Promise的finally<br>安装<code>promise.prototype.finally</code>包：<code>npm i promise.prototype.finally</code></li>
+</ol>
+<p>在 main.js 里引入该依赖包：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>(<span class="string">'promise.prototype.finally'</span>).shim();</span><br></pre></td></tr></table></figure></p>
+<p>这样系统在win10 上的IE浏览器就得以兼容了。但是在win7上的IE9报错不兼容Object.entries()，于是打算在vue加载前用原生判断是否ie浏览器，并提示。<br>由于win7 已不再维护，所以不推荐使用。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (navigator.userAgent.indexOf(<span class="string">"compatible"</span>) &gt; <span class="number">-1</span> &amp;&amp; navigator.userAgent.indexOf(<span class="string">"MSIE"</span>) &gt; <span class="number">-1</span>) &#123;</span><br><span class="line">   alert(<span class="string">'IE浏览器兼容度欠缺，为了您更好的体验，请使用谷歌浏览器访问本系统！'</span>);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
+<p>不过如果坚持支持的话，可以：<br>要在较旧环境中添加兼容的Object.entries支持，你可以在 tc39/proposal-object-values-entries 中找到Object.entries的示例（如果你不需要任何对IE的支持），在 es-shims/Object.entries 资料库中的一个polyfill，或者你可以使用下面列出的简易 polyfill。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!<span class="built_in">Object</span>.entries)</span><br><span class="line">  <span class="built_in">Object</span>.entries = <span class="function"><span class="keyword">function</span>(<span class="params"> obj </span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> ownProps = <span class="built_in">Object</span>.keys( obj ),</span><br><span class="line">        i = ownProps.length,</span><br><span class="line">        resArray = <span class="keyword">new</span> <span class="built_in">Array</span>(i); <span class="comment">// preallocate the Array</span></span><br><span class="line">    <span class="keyword">while</span> (i--)</span><br><span class="line">      resArray[i] = [ownProps[i], obj[ownProps[i]]];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> resArray;</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure></p>
+<p> 对于上述 polyfill 代码片段，如果你需要 IE9 以下的支持，那么你还需要一个 Object.keys polyfill（如 Object.keys页面上的）。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/MyBlog/tags/vue/" rel="tag"># vue</a>
+          
+            <a href="/MyBlog/tags/兼容性/" rel="tag"># 兼容性</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/MyBlog/2019/01/09/vue项目性能优化总结/" rel="next" title="vue项目性能优化总结">
+                <i class="fa fa-chevron-left"></i> vue项目性能优化总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Daisy</p>
+              <p class="site-description motion-element" itemprop="description">前端技术个人博客</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/MyBlog/archives/">
+              
+                  <span class="site-state-item-count">49</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/MyBlog/categories/index.html">
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/MyBlog/tags/index.html">
+                  <span class="site-state-item-count">51</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/MyBlog/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Daisy</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/MyBlog/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/MyBlog/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/MyBlog/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/MyBlog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/MyBlog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/MyBlog/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/MyBlog/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/MyBlog/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/MyBlog/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/MyBlog/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/MyBlog/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
