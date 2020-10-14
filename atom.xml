@@ -6,7 +6,7 @@
   <link href="/MyBlog/atom.xml" rel="self"/>
   
   <link href="https://qiuyuxiu.github.io/MyBlog/"/>
-  <updated>2020-10-14T10:01:46.693Z</updated>
+  <updated>2020-10-14T10:14:21.581Z</updated>
   <id>https://qiuyuxiu.github.io/MyBlog/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Echarts图表联动实现</title>
+    <link href="https://qiuyuxiu.github.io/MyBlog/2019/04/20/Echarts%E5%9B%BE%E8%A1%A8%E8%81%94%E5%8A%A8%E5%AE%9E%E7%8E%B0/"/>
+    <id>https://qiuyuxiu.github.io/MyBlog/2019/04/20/Echarts图表联动实现/</id>
+    <published>2019-04-20T07:08:08.000Z</published>
+    <updated>2020-10-14T10:14:21.581Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="基本情况使用"><a href="#基本情况使用" class="headerlink" title="基本情况使用"></a>基本情况使用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 分别设置每个实例的 group id</span><br><span class="line">chart1.group = &apos;group1&apos;;</span><br><span class="line">chart2.group = &apos;group1&apos;;</span><br><span class="line">echarts.connect(&apos;group1&apos;);</span><br><span class="line">// 或者可以直接传入需要联动的实例数组</span><br><span class="line">echarts.connect([chart1, chart2]);</span><br></pre></td></tr></table></figure><h2 id="基于vue-和-v-charts-封装了单图实现"><a href="#基于vue-和-v-charts-封装了单图实现" class="headerlink" title="基于vue 和 v-charts 封装了单图实现"></a>基于vue 和 v-charts 封装了单图实现</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;ve-chart </span><br><span class="line">   :data=&quot;data&quot;</span><br><span class="line">   :height=&quot;height + &apos;px&apos;&quot;</span><br><span class="line">   :width=&quot;width &amp;&amp; (width + &apos;px&apos;)&quot;</span><br><span class="line">   v-bind=&quot;realChartProps&quot;</span><br><span class="line">   :after-set-option-once=&quot;afterSet&quot;&gt;</span><br><span class="line"> &lt;div class=&quot;data-empty&quot; v-show=&quot;isEmpty&quot;&gt;&#123;&#123;$t(&apos;COMMON.empty&apos;)&#125;&#125;&lt;/div&gt;</span><br><span class="line">&lt;/ve-chart&gt;</span><br></pre></td></tr></table></figure><p>通过after-set-option-once获取echart实例，</p><p>在afterSet方法里：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">afterSet(option) &#123;</span><br><span class="line">   <span class="keyword">this</span>.chart = option;</span><br><span class="line">   <span class="keyword">if</span> (<span class="keyword">this</span>.group) &#123;</span><br><span class="line">     <span class="keyword">this</span>.chart.group = <span class="keyword">this</span>.group;</span><br><span class="line">     ECharts.connect(<span class="keyword">this</span>.group);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>ECharts需要<code>import ECharts from &#39;echarts&#39;;</code><br><code>this.group</code> 则是父类通过prop传进来。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;基本情况使用&quot;&gt;&lt;a href=&quot;#基本情况使用&quot; class=&quot;headerlink&quot; title=&quot;基本情况使用&quot;&gt;&lt;/a&gt;基本情况使用&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gut
+      
+    
+    </summary>
+    
+      <category term="Echarts" scheme="https://qiuyuxiu.github.io/MyBlog/categories/Echarts/"/>
+    
+    
+      <category term="Echarts" scheme="https://qiuyuxiu.github.io/MyBlog/tags/Echarts/"/>
+    
+  </entry>
   
   <entry>
     <title>基于v-charts自定义Echarts图例</title>
@@ -509,33 +534,6 @@
     
     
       <category term="状态码" scheme="https://qiuyuxiu.github.io/MyBlog/tags/%E7%8A%B6%E6%80%81%E7%A0%81/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>HTTP报文</title>
-    <link href="https://qiuyuxiu.github.io/MyBlog/2017/11/08/HTTP%E6%8A%A5%E6%96%87/"/>
-    <id>https://qiuyuxiu.github.io/MyBlog/2017/11/08/HTTP报文/</id>
-    <published>2017-11-08T11:19:33.000Z</published>
-    <updated>2018-06-09T15:01:08.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="报文的组成部分"><a href="#报文的组成部分" class="headerlink" title="报文的组成部分"></a>报文的组成部分</h2><p>报文由三个部分组成：对报文进行描述的起始行，包含属性的首部块，以及可选的、包含数据的主体部分。<br><img src="../../../../images/pic4.png" alt="报文组成部分"><br>报文的语法:<br>所有的报文分为两类：请求报文，响应报文。</p><h2 id="请求报文"><a href="#请求报文" class="headerlink" title="请求报文"></a>请求报文</h2><p>一个HTTP请求报文由请求行（request line）、请求头部（header）、空行和请求数据4个部分组成<br>格式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;method&gt;&lt;request-URL&gt;&lt;version&gt;</span><br><span class="line">&lt;headers&gt;</span><br><span class="line">//空行</span><br><span class="line">&lt;entity-body&gt;</span><br></pre></td></tr></table></figure></p><p>1.请求行：请求方法，链接，HTTP版本。<br>GET<br>GET最常见的一种请求方式，当客户端要从服务器中读取文档时，当点击网页上的链接或者通过在浏览器的地址栏输入网址来浏览网页的，使用的都是GET方式。GET方法要求服务器将URL定位的资源放在响应报文的数据部分，回送给客户端。<br>由于GET请求是在URL可见的，所以这种方式不适合传送私密数据。另外，由于不同的浏览器对地址的字符限制也有所不同，一般最多只能识别1024个字符，所以如果需要传送大量数据的时候，也不适合使用GET方式。</p><p>POST<br>使用POST方法可以允许客户端给服务器提供信息较多。POST方法将请求参数封装在HTTP请求数据中，以名称/值的形式出现，可以传输大量数据，这样POST方式对传送的数据大小没有限制，而且也不会显示在URL中。<br>POST方式请求行中不包含数据字符串，这些数据保存在”请求内容”部分，各数据之间也是使用”&amp;”符号隔开。POST方式大多用于页面的表单中。<br>2.请求头部：请求头部由关键字/值对组成，每行一对，关键字和值用英文冒号“:”分隔。请求头部通知服务器有关于客户端请求的信息。<br>3.空行<br>最后一个请求头之后是一个空行，发送回车符和换行符，通知服务器以下不再有请求头。<br>4.请求数据<br>请求数据不在GET方法中使用，而是在POST方法中使用</p><h2 id="响应报文"><a href="#响应报文" class="headerlink" title="响应报文"></a>响应报文</h2><p>HTTP响应也由三个部分组成，分别是：状态行、消息报头、响应正文<br>格式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;version&gt;&lt;status-code&gt;&lt;reason-phrase&gt;</span><br><span class="line">&lt;headers&gt;</span><br><span class="line">//空行</span><br><span class="line">&lt;entity-body&gt;</span><br></pre></td></tr></table></figure></p><h2 id="报文各部分说明"><a href="#报文各部分说明" class="headerlink" title="报文各部分说明"></a>报文各部分说明</h2><p><code>&lt;method&gt;</code>: 客户端希望服务器对资源执行的动作，GET,POST…<br><code>&lt;request-URL&gt;</code>: 命名了所请求资源，或者URL路径组件的完整URL。<br><code>&lt;version&gt;</code>: 报文所使用的HTTP版本，HTTP/.<br><code>&lt;status-code&gt;</code>: 状态码<br><code>&lt;reason-phrase&gt;</code>: 状态码说明<br><code>&lt;header&gt;</code>: 首部<br><code>&lt;entity-body&gt;</code>: 实体的主体部分</p><h2 id="报文首部说明"><a href="#报文首部说明" class="headerlink" title="报文首部说明"></a>报文首部说明</h2><p>通用首部：既可以出现在请求报文中，也可以出现在响应报文中。<br>请求首部：提供更多的有关请求的信息。<br>响应首部：提供更多的有关响应的信息。<br>实体首部：描述主体的长度和内容，或者资源自身。<br>扩展首部：规范中没有定义的新首部。</p><h4 id="通用首部"><a href="#通用首部" class="headerlink" title="通用首部"></a>通用首部</h4><p>Connection,Date,MIME-Version,Trailer,Transfer-Encoding,Update,Via<br>通用缓存首部：Cache-Control,Pragma</p><h4 id="请求首部"><a href="#请求首部" class="headerlink" title="请求首部"></a>请求首部</h4><p>Accept首部:<br>Accept:text/html (告诉服务器能够发送哪些媒体类型)<br>Accept-Charset: (告诉服务器能够发送哪些字符集)<br>Accept-Encoding:gzip, deflate (告诉服务器能够发送哪些编码方式)<br>Accept-Language:zh-CN,zh;q=0.8 (告诉服务器能够发送哪些语言)</p><h4 id="条件请求首部："><a href="#条件请求首部：" class="headerlink" title="条件请求首部："></a>条件请求首部：</h4><p>Expect,If-Match,If-Modified-Since…</p><h4 id="安全请求首部："><a href="#安全请求首部：" class="headerlink" title="安全请求首部："></a>安全请求首部：</h4><p>Authorization,Cookie…</p><h4 id="代理请求首部："><a href="#代理请求首部：" class="headerlink" title="代理请求首部："></a>代理请求首部：</h4><p>Max-Forward,Proxy-Authorization,Proxy-Connection</p><h4 id="响应首部"><a href="#响应首部" class="headerlink" title="响应首部"></a>响应首部</h4><p>协商首部，安全响应首部</p><h4 id="实体首部"><a href="#实体首部" class="headerlink" title="实体首部"></a>实体首部</h4><p>内容首部，实体缓存首部</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;报文的组成部分&quot;&gt;&lt;a href=&quot;#报文的组成部分&quot; class=&quot;headerlink&quot; title=&quot;报文的组成部分&quot;&gt;&lt;/a&gt;报文的组成部分&lt;/h2&gt;&lt;p&gt;报文由三个部分组成：对报文进行描述的起始行，包含属性的首部块，以及可选的、包含数据的主体部分。&lt;br
-      
-    
-    </summary>
-    
-      <category term="HTTP" scheme="https://qiuyuxiu.github.io/MyBlog/categories/HTTP/"/>
-    
-    
-      <category term="HTTP" scheme="https://qiuyuxiu.github.io/MyBlog/tags/HTTP/"/>
-    
-      <category term="报文" scheme="https://qiuyuxiu.github.io/MyBlog/tags/%E6%8A%A5%E6%96%87/"/>
     
   </entry>
   
